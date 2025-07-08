@@ -15,7 +15,7 @@ class RiesgoController extends Controller
     {
         //
         $riesgos=Riesgo::all();
-        return view('')
+        return view('riesgos.index',compact("riesgos"));
     }
 
     /**
