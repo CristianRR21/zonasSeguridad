@@ -1,6 +1,5 @@
 @extends('layout.administrador')
 @section('contenido')
-<h1>cambio</h1>
 <div class="container mt-5">
     <div class="card shadow-lg p-4">
         <h1 class="text-center mb-4">Editar Punto de Encuentro</h1>
@@ -102,7 +101,7 @@
                 required: true,
                 number: true,
                 step:1,
-                min: 1,
+                min: 10,
                 max: 80,
             },
         },
@@ -121,7 +120,7 @@
                 required: "Ingrese el número de capacidad",
                 number: "Ingrese un número válido",
                 step: "Ingrese un número entero",
-                min: "La capacidad de personas debe ser mayor o igual a 1",
+                min: "La capacidad de personas debe ser mayor o igual a 10",
                 max: "La capacidad de personas no puede ser mayor a 80"
             },
         }

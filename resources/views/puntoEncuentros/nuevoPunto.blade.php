@@ -94,7 +94,7 @@
                 required: true,
                 number: true,
                 step:1,
-                min: 1,
+                min: 10,
                 max: 80,
             },
             latitud: {
@@ -119,7 +119,7 @@
                 required: "Ingrese la capacidad",
                 number: "Ingrese un número válido",
                 step: "Ingrese un número entero",
-                min: "La capacidad de personas debe ser mayor o igual a 1",
+                min: "La capacidad de personas debe ser mayor o igual a 10",
                 max: "La capacidad de personas no puede ser mayor a 80"
             },
             latitud: {
