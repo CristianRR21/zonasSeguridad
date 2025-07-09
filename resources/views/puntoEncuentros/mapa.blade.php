@@ -1,7 +1,5 @@
 @extends('layout.administrador')
-
 @section('contenido')
-
 <div class="container mt-5">
     <div class="card shadow-lg p-4">
         <h1>Mapa de Puntos de Encuentro</h1><br>
