@@ -16,7 +16,7 @@ class PuntoEncuentroController extends Controller
 
     public function mapa()
     {
-        //consulta
+        //ver todos los puntos de encuentro
         $puntoEncuentros=PuntoEncuentro::all();
         return view('puntoEncuentros.mapa',compact('puntoEncuentros'));
     }
