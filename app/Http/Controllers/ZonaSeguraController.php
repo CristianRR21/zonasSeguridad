@@ -56,7 +56,7 @@ class ZonaSeguraController extends Controller
     public function edit(string $id)
     {
         $zona = ZonaSegura::findOrFail($id);
-        return view('zonas.edit', compact('zona'));
+        return view('zonas.editar', compact('zona'));
     }
 
     /**
