@@ -69,7 +69,7 @@ class PuntoEncuentroController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //actualizar al editar los datos
         $punto = PuntoEncuentro::findOrFail($id);
         $punto->update($request->all());
         return redirect()->route('puntoEncuentros.index')->with('success', 'Punto de Encuentro actualizado correctamente.');
@@ -77,7 +77,7 @@ class PuntoEncuentroController extends Controller
 
     public function destroy(string $id)
     {
-        //
+        //eliminar
         $punto = PuntoEncuentro::findOrFail($id);
         $punto->delete();
         return redirect()->route('puntoEncuentros.index')->with('success', 'Punto de Encuentro eliminado correctamente.');
