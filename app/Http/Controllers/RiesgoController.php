@@ -72,6 +72,8 @@ class RiesgoController extends Controller
     public function edit(string $id)
     {
         //
+        $riesgo = Riesgo::findOrFail($id);
+        return view('riesgos.editar', compact('riesgo'));
     }
 
     /**
