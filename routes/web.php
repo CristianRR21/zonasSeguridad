@@ -11,7 +11,10 @@ Route::get('/', function () {
 
 });
 
+
 Route::resource('puntoEncuentros', PuntoEncuentroController::class);
+
+Route::get('/zonas/mapa', [ZonaSeguraController::class, 'mapa']);
 
 Route::resource('riesgos',RiesgoController::class);
 

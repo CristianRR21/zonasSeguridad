@@ -16,6 +16,12 @@ class ZonaSeguraController extends Controller
         return view('zonas.index', compact('zonas'));
     }
 
+    public function mapa()
+    {
+        $zonas = ZonaSegura::all();
+        return view('zonas.mapa', compact('zonas'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

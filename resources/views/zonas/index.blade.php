@@ -17,6 +17,10 @@
         @endif
 
         <div class="d-flex justify-content-end mb-3">
+            <a href="{{ url('zonas/mapa') }}" class="btn btn-outline-primary shadow">
+                <i class="fa fa-globe"></i>&nbsp;&nbsp; Mapa de Zonas Seguras
+            </a>
+            &nbsp;&nbsp;
             <a href="{{ route('zonas.create') }}" class="btn btn-outline-success shadow">
                 <i class="fa fa-plus-circle"></i>&nbsp;&nbsp; Nueva Zona Segura
             </a>
