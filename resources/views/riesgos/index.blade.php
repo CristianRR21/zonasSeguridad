@@ -64,7 +64,7 @@
                             <td>{{ $riesgo->longitudTres }}</td>
                             <td>{{ $riesgo->longitudCuatro }}</td>
                             <td>{{ $riesgo->longitudCinco }}</td>
-                            <td>
+                          
                                
                           
                             <td>
