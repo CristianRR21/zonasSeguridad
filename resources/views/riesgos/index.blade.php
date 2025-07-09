@@ -71,7 +71,7 @@
                                 <a href="" class="btn btn-outline-warning btn-sm me-1" title="Editar">
                                     <i class="fa fa-pen"></i>
                                 </a>
-                                <form action="" method="POST" class="d-inline form-eliminar">
+                                <form action="{{ route('riesgos.destroy', $riesgo->id) }}" method="POST" class="d-inline form-eliminar">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger btn-sm btn-eliminar" title="Eliminar">

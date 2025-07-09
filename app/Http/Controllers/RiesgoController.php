@@ -88,5 +88,10 @@ class RiesgoController extends Controller
     public function destroy(string $id)
     {
         //
+
+        $riesgo = Riesgo::findOrFail($id);
+        $riesgo->delete();
+
+        return redirect()->route('riesgos.index')->with('success', 'Zona de riesgo eliminada correctamente.');
     }
 }
