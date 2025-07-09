@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RiesgoController;
+use App\Http\Controllers\ZonaSeguraController;
 
 
 Route::get('/', function () {
@@ -10,3 +11,5 @@ Route::get('/', function () {
 });
 
 Route::resource('riesgos',RiesgoController::class);
+
+Route::resource('zonas', ZonaSeguraController::class);

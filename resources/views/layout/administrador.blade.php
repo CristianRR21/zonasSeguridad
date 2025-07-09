@@ -22,21 +22,38 @@
     <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
     <title>Argon Dashboard 2 Tailwind by Creative Tim</title>
     <!--     Fonts and icons     -->
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
-<!-- Font Awesome CDN (puedes dejarlo igual si no lo descargaste local) -->
-<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome CDN (puedes dejarlo igual si no lo descargaste local) -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
-<!-- Nucleo Icons -->
-<link href="{{ asset('plantilla/administrador/build/assets/css/nucleo-icons.css') }}" rel="stylesheet" />
-<link href="{{ asset('plantilla/administrador/build/assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="{{ asset('plantilla/administrador/build/assets/css/nucleo-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plantilla/administrador/build/assets/css/nucleo-svg.css') }}" rel="stylesheet" />
 
-<!-- PopperJS desde CDN -->
-<script src="https://unpkg.com/@popperjs/core@2"></script>
+    <!-- PopperJS desde CDN -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
 
-<!-- Main CSS -->
-<link href="{{ asset('plantilla/administrador/build/assets/css/argon-dashboard-tailwind.css') }}" rel="stylesheet" />
+    <!-- jQuery primero (si lo necesitas) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG_To8UqS__6eQgWi_lDrb0rOtdw1bQGo&libraries=places&callback=initMap"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Main CSS -->
+    <link href="{{ asset('plantilla/administrador/build/assets/css/argon-dashboard-tailwind.css') }}" rel="stylesheet" />
 
   </head>
 
@@ -86,11 +103,11 @@
           </li>
 
           <li class="mt-0.5 w-full">
-            <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors" href="./pages/billing.html">
+            <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors" href="{{route('zonas.index') }}">
               <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center fill-current stroke-0 text-center xl:p-2.5">
                 <i class="relative top-0 text-sm leading-normal text-emerald-500 ni ni-credit-card"></i>
               </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Billing</span>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Zonas Seguras</span>
             </a>
           </li>
 
