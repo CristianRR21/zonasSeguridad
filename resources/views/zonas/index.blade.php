@@ -1,83 +1,91 @@
 @extends('layout.administrador')
 
 @section('contenido')
-<br><br><br><br><br>
-<div class="container mt-4">
-    <h1 class="text-center">Listado de Zonas Seguras</h1>
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h1 class="text-center mb-4">Listado de Zonas Seguras</h1>
 
-    @if(session('success'))
-        <script>
-            Swal.fire({
-                title: "CONFIRMACIÓN",
-                text: "{{ session('success') }}",
-                icon: "success",
-            });
-        </script>
-    @endif
-    <br>
-    <div class="text-end mb-3">
-        <a href="{{ route('zonas.create') }}" class="btn btn-outline-success">
-            <i class="fa fa-map-marker-alt"></i> Nueva Zona Segura
-        </a>
-    </div>
-    <br>
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered align-middle">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Radio (m)</th>
-                    <th>Latitud</th>
-                    <th>Longitud</th>
-                    <th>Tipo de Seguridad</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($zonas as $zona)
+        @if(session('success'))
+            <script>
+                Swal.fire({
+                    title: "Éxito",
+                    text: "{{ session('success') }}",
+                    icon: "success",
+                    confirmButtonColor: "#28a745"
+                });
+            </script>
+        @endif
+
+        <div class="d-flex justify-content-end mb-3">
+            <a href="{{ route('zonas.create') }}" class="btn btn-outline-success shadow">
+                <i class="fa fa-plus-circle"></i>&nbsp;&nbsp; Nueva Zona Segura
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle table-bordered text-center shadow-sm">
+                <thead class="table-success">
                     <tr>
-                        <td>{{ $zona->id }}</td>
-                        <td>{{ $zona->nombre }}</td>
-                        <td>{{ $zona->radio }}</td>
-                        <td>{{ $zona->latitud }}</td>
-                        <td>{{ $zona->longitud }}</td>
-                        <td>{{ $zona->tipo_seguridad }}</td>
-                        <td>
-                            <a href="{{ route('zonas.edit', $zona->id) }}" class="btn btn-outline-warning btn-sm">
-                                <i class="fa fa-pen"></i>
-                            </a>
-
-                            <form action="{{ route('zonas.destroy', $zona->id) }}" method="POST" style="display:inline;" class="form-eliminar">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-outline-danger btn-sm btn-eliminar">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
-                        </td>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Radio (m)</th>
+                        <th>Latitud</th>
+                        <th>Longitud</th>
+                        <th>Seguridad</th>
+                        <th>Acciones</th>
                     </tr>
-                @endforeach
-
-                @if($zonas->isEmpty())
-                    <tr>
-                        <td colspan="7" class="text-center">No hay zonas registradas.</td>
-                    </tr>
-                @endif
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @forelse($zonas as $zona)
+                        <tr>
+                            <td>{{ $zona->id }}</td>
+                            <td>{{ $zona->nombre }}</td>
+                            <td>{{ $zona->radio }}</td>
+                            <td>{{ $zona->latitud }}</td>
+                            <td>{{ $zona->longitud }}</td>
+                            <td>
+                                <span class="badge 
+                                    @if($zona->tipo_seguridad === 'ALTA') bg-success 
+                                    @elseif($zona->tipo_seguridad === 'MEDIA') bg-warning text-dark 
+                                    @else bg-danger 
+                                    @endif">
+                                    {{ $zona->tipo_seguridad }}
+                                </span>
+                            </td>
+                            <td>
+                                <a href="{{ route('zonas.edit', $zona->id) }}" class="btn btn-outline-primary btn-sm me-1" title="Editar">
+                                    <i class="fa fa-pen"></i>
+                                </a>
+                                <form action="{{ route('zonas.destroy', $zona->id) }}" method="POST" class="d-inline form-eliminar">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger btn-sm btn-eliminar" title="Eliminar">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">No hay zonas registradas aún.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
+{{-- SweetAlert2 para confirmar eliminación --}}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.btn-eliminar').forEach(button => {
-            button.addEventListener('click', function(event) {
+            button.addEventListener('click', function (event) {
                 event.preventDefault();
                 Swal.fire({
-                    title: '¿Estás seguro de eliminar esta zona?',
+                    title: '¿Eliminar esta zona?',
                     text: 'Esta acción no se puede deshacer.',
-                    icon: 'warning',
+                    icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#d33',
                     cancelButtonColor: '#3085d6',

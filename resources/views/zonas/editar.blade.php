@@ -4,33 +4,34 @@
 <div class="d-flex justify-content-center align-items-center flex-column">
     <div class="card p-4 shadow" style="width: 50%;">
         <br><br><br><br>
-        <h1 class="text-center">Nueva Zona Segura</h1>
-        <form action="{{ route('zonas.store') }}" method="POST" id="form_nueva_zona">
+        <h1 class="text-center">Editar Zona Segura</h1>
+        <form action="{{ route('zonas.update', $zona->id) }}" method="POST" id="form_editar_zona">
             @csrf
+            @method('PUT')
 
             <label for="nombre"><b>Nombre de la Zona:</b></label>
-            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ej: Zona Escolar, Parque Central" required> <br>
+            <input type="text" name="nombre" id="nombre" class="form-control" value="{{ old('nombre', $zona->nombre) }}" required> <br>
 
             <label for="radio"><b>Radio de Seguridad (metros):</b></label>
-            <input type="number" name="radio" id="radio" class="form-control" placeholder="Ej: 200" min="1" step="0.1" required> <br>
+            <input type="number" name="radio" id="radio" class="form-control" value="{{ old('radio', $zona->radio) }}" min="1" step="0.1" required> <br>
 
             <label for="tipo_seguridad"><b>Tipo de Seguridad:</b></label>
             <select name="tipo_seguridad" id="tipo_seguridad" class="form-control" required>
                 <option value="">-- Seleccione un tipo --</option>
-                <option value="ALTA">Alta</option>
-                <option value="MEDIA">Media</option>
-                <option value="BAJA">Baja</option>
+                <option value="ALTA" {{ $zona->tipo_seguridad == 'ALTA' ? 'selected' : '' }}>Alta</option>
+                <option value="MEDIA" {{ $zona->tipo_seguridad == 'MEDIA' ? 'selected' : '' }}>Media</option>
+                <option value="BAJA" {{ $zona->tipo_seguridad == 'BAJA' ? 'selected' : '' }}>Baja</option>
             </select> <br>
 
             <label><b>Ubicación Geográfica:</b></label>
             <div class="row">
                 <div class="col-md-6">
                     <label for="latitud"><b>Latitud:</b></label>
-                    <input type="number" name="latitud" id="latitud" class="form-control" readonly required> <br>
+                    <input type="number" name="latitud" id="latitud" class="form-control" value="{{ old('latitud', $zona->latitud) }}" readonly required> <br>
                 </div>
                 <div class="col-md-6">
                     <label for="longitud"><b>Longitud:</b></label>
-                    <input type="number" name="longitud" id="longitud" class="form-control" readonly required> <br>
+                    <input type="number" name="longitud" id="longitud" class="form-control" value="{{ old('longitud', $zona->longitud) }}" readonly required> <br>
                 </div>
             </div>
 
@@ -38,7 +39,7 @@
 
             <center>
                 <button type="submit" class="btn btn-outline-success">
-                    <i class="fa fa-save"></i> Guardar
+                    <i class="fa fa-save"></i> Actualizar
                 </button>
                 &nbsp;&nbsp;&nbsp;
                 <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalMapaZona" onclick="graficarZona()">
@@ -72,7 +73,10 @@
         <!-- Scripts de Google Maps -->
         <script>
             function initMapaZona() {
-                const ubicacionInicial = new google.maps.LatLng(-0.9374805, -78.6161327);
+                const latitud = parseFloat(document.getElementById("latitud").value) || -0.9374805;
+                const longitud = parseFloat(document.getElementById("longitud").value) || -78.6161327;
+                const ubicacionInicial = new google.maps.LatLng(latitud, longitud);
+
                 const mapa = new google.maps.Map(document.getElementById('mapa_zona'), {
                     center: ubicacionInicial,
                     zoom: 15,
@@ -82,7 +86,7 @@
                 const marcador = new google.maps.Marker({
                     position: ubicacionInicial,
                     map: mapa,
-                    title: "Seleccione la ubicación de la zona",
+                    title: "Ubicación actual de la zona",
                     draggable: true
                 });
 
