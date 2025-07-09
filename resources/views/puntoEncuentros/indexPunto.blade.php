@@ -4,10 +4,16 @@
     <div class="card shadow-lg p-4">
     <h1>Puntos de Encuentro</h1>
     <div class="flex flex-col gap-4">
-        <a href="{{ route('puntoEncuentros.create') }}" class="btn btn-primary">Crear Punto de Encuentro</a>
-        <table class="table table-bordered">
-            <thead>
+        <div class="d-flex justify-content-end mb-3">
+            <a href="{{ route('puntoEncuentros.create') }}" class="btn btn-outline-success shadow">
+                <i class="fa fa-plus-circle"></i>&nbsp;&nbsp; Nuevo Punto de Encuentro
+            </a>
+        </div>
+        <div class="table-responsive">
+        <table class="table table-hover align-middle table-bordered text-center shadow-sm">
+            <thead class="table-primary">
                 <tr>
+                    <th>#</th>
                     <th>PUNTO DE ENCUENTRO</th>
                     <th>CAPACIDAD</th>
                     <th>COORDENADAS</th>
@@ -16,8 +22,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($puntoEncuentros as $puntoTemp)
+                @forelse($puntoEncuentros as $puntoTemp)
                     <tr>
+                        <td>{{ $puntoTemp->id }}</td>
                         <td>{{ $puntoTemp->nombre }}</td>
                         <td>{{ $puntoTemp->capacidad }}</td>
                         <td>{{ $puntoTemp->latitud }} {{ $puntoTemp->longitud }}</td>
@@ -33,9 +40,14 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">No hay puntos de encuentro registrados aún.</td>
+                        </tr>
+                @endforelse
             </tbody>
         </table>
+        </div>
     </div>
     </div>
 </div>
