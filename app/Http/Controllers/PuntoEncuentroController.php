@@ -7,9 +7,6 @@ use App\Models\PuntoEncuentro;
 
 class PuntoEncuentroController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         //
@@ -78,9 +75,6 @@ class PuntoEncuentroController extends Controller
         return redirect()->route('puntoEncuentros.index')->with('success', 'Punto de Encuentro actualizado correctamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //
