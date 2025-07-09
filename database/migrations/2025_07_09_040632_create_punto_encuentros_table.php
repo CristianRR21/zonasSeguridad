@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('punto_encuentros', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->int('capacidad'); 
+            $table->integer('capacidad'); 
             $table->double('latitud');
             $table->double('longitud');
             $table->string('responsable');

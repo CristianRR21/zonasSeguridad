@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div id="mapa_cliente" class="mt-3" style="border:1px solid black; height:300px;"></div><br>
+            <div id="mapa_puntos" class="mt-3" style="border:1px solid black; height:300px;"></div><br>
             <center>
                 <button type="submit" class="btn btn-outline-success">
                     <i class="fa fa-save"></i> Guardar
@@ -52,7 +52,7 @@
         var longitud = -78.6161327;
 
         var latitud_longitud = new google.maps.LatLng(latitud, longitud);
-        var mapa = new google.maps.Map(document.getElementById('mapa_cliente'), {
+        var mapa = new google.maps.Map(document.getElementById('mapa_puntos'), {
             center: latitud_longitud,
             zoom: 8,
             mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -98,32 +98,35 @@
                 max: 80,
             },
             latitud: {
-                required: true,
-                number: true
+                required: true
             },
             longitud: {
-                required: true,
-                number: true
+                required: true
             }
         },
         messages: {
             nombre: {
-                required: "Ingrese el nombre del punto de encuentro"
+                required: "Ingrese el nombre del punto de encuentro",
+                minlength: "Ingrese un nombre de al menos 5 caracteres",
+                maxlength: "Ingrese un nombre de no mas de 150 caracteres"
             },
             responsable: {
-                required: "Ingrese el nombre del responsable"
+                required: "Ingrese el nombre del responsable",
+                minlength: "Ingrese un nombre de al menos 5 caracteres",
+                maxlength: "Ingrese un nombre de no mas de 150 caracteres"
             },
             capacidad: {
                 required: "Ingrese la capacidad",
-                number: "Ingrese un número válido"
+                number: "Ingrese un número válido",
+                step: "Ingrese un número entero",
+                min: "La capacidad de personas debe ser mayor o igual a 1",
+                max: "La capacidad de personas no puede ser mayor a 80"
             },
             latitud: {
-                required: "Ingrese la latitud",
-                number: "Ingrese un número válido"
+                required: "Seleccione la ubicacion en el mapa", 
             },
             longitud: {
-                required: "Ingrese la longitud",
-                number: "Ingrese un número válido"
+                required: "Ingrese la ubicacion en el mapa",
             }
         }
     });
