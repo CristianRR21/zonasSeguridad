@@ -17,6 +17,12 @@ class PuntoEncuentroController extends Controller
         return view('puntoEncuentros.indexPunto', compact('puntoEncuentros')); 
     }
 
+    public function mapa()
+    {
+        //consulta
+        $puntoEncuentros=PuntoEncuentro::all();
+        return view('puntoEncuentros.mapa',compact('puntoEncuentros'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -32,6 +38,15 @@ class PuntoEncuentroController extends Controller
     public function store(Request $request)
     {
         //
+        $datos=[
+            'nombre' => $request->nombre,
+            'capacidad' => $request->capacidad,
+            'latitud' => $request->latitud,
+            'longitud' => $request->longitud,
+            'responsable' => $request->responsable,
+        ];
+        PuntoEncuentro::create($datos);
+        return redirect()->route('puntoEncuentros.index');
     }
 
     /**
@@ -48,6 +63,8 @@ class PuntoEncuentroController extends Controller
     public function edit(string $id)
     {
         //
+        $punto = PuntoEncuentro::findOrFail($id);
+        return view('puntoEncuentros.editarPunto', compact('punto'));
     }
 
     /**
@@ -56,6 +73,9 @@ class PuntoEncuentroController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $punto = PuntoEncuentro::findOrFail($id);
+        $punto->update($request->all());
+        return redirect()->route('puntoEncuentros.index')->with('success', 'Punto de Encuentro actualizado correctamente.');
     }
 
     /**
@@ -64,5 +84,8 @@ class PuntoEncuentroController extends Controller
     public function destroy(string $id)
     {
         //
+        $punto = PuntoEncuentro::findOrFail($id);
+        $punto->delete();
+        return redirect()->route('puntoEncuentros.index')->with('success', 'Punto de Encuentro eliminado correctamente.');
     }
 }
