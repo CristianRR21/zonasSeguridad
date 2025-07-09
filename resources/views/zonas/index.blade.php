@@ -11,7 +11,6 @@
                     title: "Éxito",
                     text: "{{ session('success') }}",
                     icon: "success",
-                    confirmButtonColor: "#28a745"
                 });
             </script>
         @endif
@@ -57,7 +56,7 @@
                                 </span>
                             </td>
                             <td>
-                                <a href="{{ route('zonas.edit', $zona->id) }}" class="btn btn-outline-primary btn-sm me-1" title="Editar">
+                                <a href="{{ route('zonas.edit', $zona->id) }}" class="btn btn-outline-warning btn-sm me-1" title="Editar">
                                     <i class="fa fa-pen"></i>
                                 </a>
                                 <form action="{{ route('zonas.destroy', $zona->id) }}" method="POST" class="d-inline form-eliminar">
@@ -80,7 +79,6 @@
     </div>
 </div>
 
-{{-- SweetAlert2 para confirmar eliminación --}}
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.btn-eliminar').forEach(button => {

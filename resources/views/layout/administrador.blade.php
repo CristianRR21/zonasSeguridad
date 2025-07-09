@@ -38,11 +38,15 @@
     <!-- jQuery primero (si lo necesitas) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        
+    
+    <!-- jQuery Validation -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/localization/messages_es.min.js"></script>
+
     <!-- Google Maps API -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG_To8UqS__6eQgWi_lDrb0rOtdw1bQGo&libraries=places&callback=initMap"></script>
 
@@ -424,6 +428,16 @@
         </div>
       </div>
     </div>
+    <style>
+      .error {
+        color: red;
+        font-family: 'Montserrat';
+      }
+      
+      .form-control.error {
+        border: 1px solid red;
+      }
+    </style>
   </body>
 <!-- Plugin Chart.js -->
 <script src="{{ asset('plantilla/administrador/build/assets/js/plugins/chartjs.min.js') }}" async></script>
