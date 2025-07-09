@@ -25,6 +25,9 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
+    <!-- Font Awesome CDN (puedes dejarlo igual si no lo descargaste local) -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
     <!-- Nucleo Icons -->
     <link href="{{ asset('plantilla/administrador/build/assets/css/nucleo-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('plantilla/administrador/build/assets/css/nucleo-svg.css') }}" rel="stylesheet" />
