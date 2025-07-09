@@ -5,7 +5,13 @@
     <div class="card shadow-lg p-4">
         <h1 class="text-center mb-4">Mapa de Zonas Seguras</h1>
         <div id="mapa_general" style="height: 500px; border: 2px solid #ccc;"></div>
+        <div class="d-flex justify-content-end mt-4">
+            <a href="{{ route('zonas.index') }}" class="btn btn-outline-primary shadow" title = "Volver">
+                <i class="fa fa-home"></i>
+            </a>
+        </div>
     </div>
+
 </div>
 
 <script>
