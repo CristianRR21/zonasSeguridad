@@ -23,6 +23,7 @@ class PuntoEncuentroController extends Controller
     public function create()
     {
         //
+        return view('puntoEncuentros.nuevoPunto');
     }
 
     /**
