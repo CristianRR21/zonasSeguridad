@@ -173,6 +173,17 @@
       </div>
     </main>
 
+    <style>
+      .error {
+        color: red;
+        font-family: 'Montserrat';
+      }
+      
+      .form-control.error {
+        border: 1px solid red;
+      }
+    </style>
+
     <!-- Script principal -->
     <script src="{{ asset('plantilla/administrador/build/assets/js/argon-dashboard-tailwind.js') }}" async></script>
   </body>

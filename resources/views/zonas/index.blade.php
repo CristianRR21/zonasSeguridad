@@ -26,7 +26,7 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-hover align-middle table-bordered text-center shadow-sm">
+            <table id ="tbl-zonas" class="table table-hover align-middle table-bordered text-center shadow-sm">
                 <thead class="table-success">
                     <tr>
                         <th>#</th>
@@ -80,7 +80,18 @@
         </div>
     </div>
 </div>
-
+<script>
+    let table = new DataTable('#tbl-zonas', {
+    layout: {
+        topStart: {
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+        }
+    },
+    language: {
+        url: 'https://cdn.datatables.net/plug-ins/2.3.2/i18n/es-ES.json',
+    },
+});
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.btn-eliminar').forEach(button => {
