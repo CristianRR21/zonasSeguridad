@@ -7,9 +7,9 @@ use App\Http\Controllers\PuntoEncuentroController;
 
 
 Route::get('/', function () {
-    return view('welcome');
-
+    return view('layout.visitante');
 });
+
 
 Route::get('/puntoEncuentros/mapa', [PuntoEncuentroController::class, 'mapa']);
 Route::resource('puntoEncuentros', PuntoEncuentroController::class);
