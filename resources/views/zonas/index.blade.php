@@ -32,8 +32,7 @@
                         <th>#</th>
                         <th>Nombre</th>
                         <th>Radio (m)</th>
-                        <th>Latitud</th>
-                        <th>Longitud</th>
+                        <th>Coordenadas</th>
                         <th>Seguridad</th>
                         <th>Acciones</th>
                     </tr>
@@ -44,8 +43,11 @@
                             <td>{{ $zona->id }}</td>
                             <td>{{ $zona->nombre }}</td>
                             <td>{{ $zona->radio }}</td>
-                            <td>{{ $zona->latitud }}</td>
-                            <td>{{ $zona->longitud }}</td>
+                            <td>
+                                <span class="text-muted small">
+                                    Lat: {{ $zona->latitud }}, Lng: {{ $zona->longitud }}
+                                </span>
+                            </td>
                             <td>
                                 <span class="badge 
                                     @if($zona->tipo_seguridad === 'ALTA') bg-success 
@@ -70,7 +72,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center text-muted">No hay zonas registradas aún.</td>
+                            <td colspan="6" class="text-center text-muted">No hay zonas registradas aún.</td>
                         </tr>
                     @endforelse
                 </tbody>
