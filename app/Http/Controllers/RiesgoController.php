@@ -82,6 +82,31 @@ class RiesgoController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $riesgo = Riesgo::findOrFail($id);
+        $datos=[
+            'nombre'=>$request->nombre,
+            'descripcion'=>$request->descripcion,
+            'nivel'=>$request->nivel,
+            'latitudUno'=>$request->latitudUno,
+            'longitudUno'=>$request->longitudUno,
+
+            'latitudDos'=>$request->latitudDos,
+            'longitudDos'=>$request->longitudDos,
+
+            'latitudTres'=>$request->latitudTres,
+            'longitudTres'=>$request->longitudTres,
+
+            'latitudCuatro'=>$request->latitudCuatro,
+            'longitudCuatro'=>$request->longitudCuatro,
+
+            'latitudCinco'=>$request->latitudCinco,
+            'longitudCinco'=>$request->longitudCinco,
+        ];
+        $riesgo->update($datos);
+       
+        return redirect()->route('riesgos.index')->with('success', 'Zona de riesgo actualizada con éxito');
+
+
     }
 
     /**
@@ -96,4 +121,12 @@ class RiesgoController extends Controller
 
         return redirect()->route('riesgos.index')->with('success', 'Zona de riesgo eliminada correctamente.');
     }
+
+    
+    public function mapa()
+    {
+        $riesgos = Riesgo::all();
+        return view('riesgos.mapa', compact('riesgos'));
+    }
+
 }

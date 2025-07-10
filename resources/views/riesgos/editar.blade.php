@@ -8,29 +8,32 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <h1 class="text-center mb-4">Nueva Zona de Riesgo</h1>
-            <form action="{{ route('riesgos.store') }}" method="POST" id="frm_riesgo">
+            <form action="{{ route('riesgos.update' ,$riesgo->id) }}" method="POST" id="frm_riesgo">
                 @csrf
+                @method('PUT') 
+                <input type="hidden" id="id" name="name" value="{{$riesgo->id}}">
+
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre de la zona de riesgo</label>
-                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingrese el nombre ">
+                    <input type="text" name="nombre" id="nombre" class="form-control" value="{{ $riesgo->nombre }}" placeholder="Ingrese el nombre ">
                 </div>
                 <div class="mb-3">
                     <label for="descripion" class="form-label">Descripcion</label>
-                    <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Ingrese la descripcion" >
+                    <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{ $riesgo->descripcion }}"placeholder="Ingrese la descripcion" >
                 </div>
                  <div class="mb-3">
                     <label for="nivel" class="form-label">Nivel de riesgo </label>
-                    <input type="text" name="nivel" id="nivel" class="form-control" placeholder="Ingrese el nivel" >
+                    <input type="text" name="nivel" id="nivel" class="form-control" value="{{ $riesgo->nivel}}"placeholder="Ingrese el nivel" >
                 </div>
                 
                 <div class="row">
                     <div class="col-md-5">
                         <label for=""><b>COORDENADA N° 1</b></label> <br>
                         <label for=""><b>Latitud:</b></label><br>
-                        <input type="number" name="latitudUno" id="latitudUno"
+                        <input type="number" name="latitudUno" id="latitudUno" value="{{$riesgo->latitudUno}}"
                         class="form-control" readonly placeholder="Seleccione la latitud ..."><br>
                         <label for=""><b>Longitud:</b></label><br>
-                        <input type="number" name="longitudUno" id="longitudUno"
+                        <input type="number" name="longitudUno" id="longitudUno" value="{{$riesgo->longitudUno}}"
                         class="form-control" readonly placeholder="Seleccione la longitud ...">
                     </div>
                     <div class="col-md-7">
@@ -45,10 +48,10 @@
                     <div class="col-md-5">
                         <label for=""><b>COORDENADA N° 2</b></label> <br>
                         <label for=""><b>Latitud:</b></label><br>
-                        <input type="number" name="latitudDos" id="latitudDos"
+                        <input type="number" name="latitudDos" id="latitudDos" value="{{$riesgo->latitudDos}}"
                         class="form-control" readonly placeholder="Seleccione la latitud ..."><br>
                         <label for=""><b>Longitud:</b></label><br>
-                        <input type="number" name="longitudDos" id="longitudDos"
+                        <input type="number" name="longitudDos" id="longitudDos" value="{{$riesgo->longitudDos}}"
                         class="form-control" readonly placeholder="Seleccione la longitud ...">
                     </div>
                     <div class="col-md-7">
@@ -62,10 +65,10 @@
                     <div class="col-md-5">
                         <label for=""><b>COORDENADA N° 3</b></label> <br>
                         <label for=""><b>Latitud:</b></label><br>
-                        <input type="number" name="latitudTres" id="latitudTres"
+                        <input type="number" name="latitudTres" id="latitudTres" value="{{$riesgo->latitudTres}}"
                         class="form-control" readonly placeholder="Seleccione la latitud ..."><br>
                         <label for=""><b>Longitud:</b></label><br>
-                        <input type="number" name="longitudTres" id="longitudTres"
+                        <input type="number" name="longitudTres" id="longitudTres" value="{{$riesgo->longitudTres}}"
                         class="form-control" readonly placeholder="Seleccione la longitud ...">
                     </div>
                     <div class="col-md-7">
@@ -78,10 +81,10 @@
                     <div class="col-md-5">
                         <label for=""><b>COORDENADA N° 4</b></label> <br>
                         <label for=""><b>Latitud:</b></label><br>
-                        <input type="number" name="latitudCuatro" id="latitudCuatro"
+                        <input type="number" name="latitudCuatro" id="latitudCuatro" value="{{$riesgo->latitudCuatro}}"
                         class="form-control" readonly placeholder="Seleccione la latitud ..."><br>
                         <label for=""><b>Longitud:</b></label><br>
-                        <input type="number" name="longitudCuatro" id="longitudCuatro"
+                        <input type="number" name="longitudCuatro" id="longitudCuatro" value="{{$riesgo->longitudCuatro}}"
                         class="form-control" readonly placeholder="Seleccione la longitud ...">
                     </div>
                     <div class="col-md-7">
@@ -94,10 +97,10 @@
                     <div class="col-md-5">
                         <label for=""><b>COORDENADA N° 5</b></label> <br>
                         <label for=""><b>Latitud:</b></label><br>
-                        <input type="number" name="latitudCinco" id="latitudCinco"
+                        <input type="number" name="latitudCinco" id="latitudCinco" value="{{$riesgo->latitudCinco}}"
                         class="form-control" readonly placeholder="Seleccione la latitud ..."><br>
                         <label for=""><b>Longitud:</b></label><br>
-                        <input type="number" name="longitudCinco" id="longitudCinco"
+                        <input type="number" name="longitudCinco" id="longitudCinco" value="{{$riesgo->longitudCinco}}"
                         class="form-control" readonly placeholder="Seleccione la longitud ...">
                     </div>
                     <div class="col-md-7">
@@ -111,7 +114,8 @@
                
                 <center>
                     <button type="submit" class="btn btn-outline-success">
-                        <i class="fa fa-save"></i> Guardar
+                        <i class="fa fa-save"></i> Actualizar
+                        
                     </button>
                     &nbsp;&nbsp;&nbsp;
                     <a href="{{ route('riesgos.index') }}" class="btn btn-outline-danger">
@@ -133,6 +137,23 @@
 </div>
 </div>
 
+<script>
+lat1= {{$riesgo->latitudUno}};
+lng1= {{$riesgo->longitudUno}};
+
+lat2= {{$riesgo->latitudDos}};
+lng2= {{$riesgo->longitudDos}};
+
+lat3= {{$riesgo->latitudTres}};
+lng3= {{$riesgo->longitudTres}};
+
+lat4= {{$riesgo->latitudCuatro}};
+lng4= {{$riesgo->longitudCuatro}};
+
+lat5= {{$riesgo->latitudCinco}};
+lng5= {{$riesgo->longitudCinco}};
+
+</script>
 <script type="text/javascript">
 
      var mapaPoligono;//Variable Global
@@ -143,15 +164,17 @@
 
         //INICIO COORDENADA 1
         var mapaUno=new google.maps.Map(
+          //var latitud_longitud= new google.maps.LatLng("{{$riesgo->latitudUno}}","{{$riesgo->longitudUno}}");
+
           document.getElementById('mapaUno'),
           {
-            center:latitud_longitud,
+            center:{lat: lat1, lng: lng1},
             zoom:15,
             mapTypeId:google.maps.MapTypeId.ROADMAP
           }
         );
         var marcadorUno=new google.maps.Marker({
-          position:latitud_longitud,
+          position:{lat: lat1, lng: lng1},
           map:mapaUno,
           title:"Seleccione la coordenada 1",
           draggable:true
@@ -172,15 +195,15 @@
         var mapaDos=new google.maps.Map(
           document.getElementById('mapaDos'),
           {
-            center:latitud_longitud,
+            center:{lat: lat2, lng: lng2},
             zoom:15,
             mapTypeId:google.maps.MapTypeId.ROADMAP
           }
         );
         var marcadorDos=new google.maps.Marker({
-          position:latitud_longitud,
+          position:{lat: lat2, lng: lng2},
           map:mapaDos,
-          title:"Seleccione la coordenada 3",
+          title:"Seleccione la coordenada 2",
           draggable:true
         });
         google.maps.event.addListener(
@@ -200,13 +223,13 @@
         var mapaTres=new google.maps.Map(
           document.getElementById('mapaTres'),
           {
-            center:latitud_longitud,
+            center:{lat: lat3, lng: lng3},
             zoom:15,
             mapTypeId:google.maps.MapTypeId.ROADMAP
           }
         );
         var marcadorTres=new google.maps.Marker({
-          position:latitud_longitud,
+          position:{lat: lat3, lng: lng3},
           map:mapaTres,
           title:"Seleccione la coordenada 3",
           draggable:true
@@ -229,13 +252,13 @@
         var mapaCuatro=new google.maps.Map(
           document.getElementById('mapaCuatro'),
           {
-            center:latitud_longitud,
+            center:{lat: lat4, lng: lng4},
             zoom:15,
             mapTypeId:google.maps.MapTypeId.ROADMAP
           }
         );
         var marcadorCuatro=new google.maps.Marker({
-          position:latitud_longitud,
+          position:{lat: lat4, lng: lng4},
           map:mapaCuatro,
           title:"Seleccione la coordenada 4",
           draggable:true
@@ -255,13 +278,13 @@
         var mapaCinco=new google.maps.Map(
           document.getElementById('mapaCinco'),
           {
-            center:latitud_longitud,
+            center:{lat: lat5, lng: lng5},
             zoom:15,
             mapTypeId:google.maps.MapTypeId.ROADMAP
           }
         );
         var marcadorCinco=new google.maps.Marker({
-          position:latitud_longitud,
+          position:{lat: lat5, lng: lng5},
           map:mapaCinco,
           title:"Seleccione la coordenada 5",
           draggable:true

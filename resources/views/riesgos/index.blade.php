@@ -16,7 +16,7 @@
         @endif
 
         <div class="d-flex justify-content-end mb-3">
-            <a href="" class="btn btn-outline-primary shadow">
+            <a href="{{ url('riesgos/mapa') }}" class="btn btn-outline-primary shadow">
                 <i class="fa fa-globe"></i>&nbsp;&nbsp; Mapa de Zonas de Riesgo
             </a>
             &nbsp;&nbsp;
@@ -33,16 +33,12 @@
                         <th>Nombre</th>
                         <th>Descripcion</th>
                         <th>Nivel de Riesgo</th>
-                        <th>LatitudUno</th>
-                        <th>LatitudDos</th>
-                        <th>LatitudTres</th>
-                        <th>LatitudCuatro</th>
-                        <th>LatitudCinco</th>
-                        <th>LongitudUno</th>
-                        <th>LongitudDos</th>
-                        <th>LongitudTres</th>
-                        <th>LongitudCuatro</th>
-                        <th>LongitudCinco</th>
+                        <th>Coordenadas Uno</th>
+                        <th>Coordenadas Dos</th>
+                        <th>Coordenadas Tres</th>
+                        <th>Coordenadas Cuatro</th>
+                        <th>Coordenadas Cinco</th>
+                        
               
                         <th>Acciones</th>
                     </tr>
@@ -54,17 +50,12 @@
                             <td>{{ $riesgo->nombre }}</td>
                             <td>{{ $riesgo->descripcion }}</td>
                             <td>{{ $riesgo->nivel }}</td>
-                            <td>{{ $riesgo->latitudUno }}</td>
-                            <td>{{ $riesgo->latitudDos }}</td>
-                            <td>{{ $riesgo->latitudTres }}</td>
-                            <td>{{ $riesgo->latitudCuatro }}</td>
-                            <td>{{ $riesgo->latitudCinco }}</td>
-                            <td>{{ $riesgo->longitudUno }}</td>
-                            <td>{{ $riesgo->longitudDos }}</td>
-                            <td>{{ $riesgo->longitudTres }}</td>
-                            <td>{{ $riesgo->longitudCuatro }}</td>
-                            <td>{{ $riesgo->longitudCinco }}</td>
-                          
+                            <td>Latitud:{{ $riesgo->latitudUno }} <br>Longuitud:{{ $riesgo->longitudUno }}</td>
+                            <td>Latitud:{{ $riesgo->latitudDos }}<br>Longuitud:{{ $riesgo->longitudDos }}</td>
+                            <td>Latitud:{{ $riesgo->latitudTres }}<br>Longuitud:{{ $riesgo->longitudTres }}</td>
+                            <td>Latitud:{{ $riesgo->latitudCuatro }}<br>Longuitud:{{ $riesgo->longitudCuatro }}</td>
+                            <td>Latitud:{{ $riesgo->latitudCinco }}<br>Longuitud:{{ $riesgo->longitudCinco }}</td>
+                                               
                                
                           
                             <td>

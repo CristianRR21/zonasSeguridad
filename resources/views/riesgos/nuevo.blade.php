@@ -105,31 +105,42 @@
                     </div>
                 </div>
                 <br>
+                <div class="row">
+                <div class="col-md-12">
+                    <div id="mapa-poligono" 
+                    style="height:500px; width:100%;
+                      border:2px solid blue;">
 
-
-               
-                <center>
+                    </div>
+                </div>
+                  
+                <center><br>
                     <button type="submit" class="btn btn-outline-success">
                         <i class="fa fa-save"></i> Guardar
                     </button>
-                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;                         
+
+                      <button type="reset" class="btn btn-outline-danger">
+                        Limpiar
+                    </button>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <button type="button" class="btn btn-outline-primary" 
+                        onclick="graficarZona();">
+                        Graficar Zona de Riesgo
+                     </button>
+
+                    &nbsp;&nbsp;&nbsp; 
                     <a href="{{ route('riesgos.index') }}" class="btn btn-outline-danger">
                         <i class="fa fa-times"></i> Cancelar
                     </a>
+                        &nbsp;&nbsp;&nbsp;
                 </center>
+              
             </form>
         </div>
     </div>
     </div>
-    <div class="row">
-    <div class="col-md-12">
-        <div id="mapa-poligono" 
-         style="height:500px; width:100%;
-          border:2px solid blue;">
-
-        </div>
-    </div>
-</div>
+  
 </div>
 
 <script type="text/javascript">
@@ -287,7 +298,7 @@
       }
 
 
-      function graficarPredio(){
+      function graficarZona(){
             //alert("Graficando");
 
             //Capturando coordenadas seleccionas en el mapa
@@ -337,7 +348,7 @@
             poligono.setMap(mapaPoligono);
       }
 
-    </script>
+</script>
 
 
 <script>
