@@ -18,6 +18,6 @@ Route::get('/zonas/mapa', [ZonaSeguraController::class, 'mapa']);
 Route::get('/riesgos/mapa', [RiesgoController::class, 'mapa']);
 Route::resource('riesgos',RiesgoController::class);
 
-
+Route::view('login', 'login');
 
 Route::resource('zonas', ZonaSeguraController::class);
