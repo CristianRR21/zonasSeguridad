@@ -5,9 +5,16 @@ use App\Http\Controllers\RiesgoController;
 use App\Http\Controllers\ZonaSeguraController;
 use App\Http\Controllers\PuntoEncuentroController;
 
+use App\Http\Controllers\UserController;
+
+Route::get('/login', function () {
+    return view('login.login');
+})->name('login');
+
+
 
 Route::get('/', function () {
-    return view('layout.visitante');
+    return redirect()->route('login');
 });
 
 
@@ -18,6 +25,29 @@ Route::get('/zonas/mapa', [ZonaSeguraController::class, 'mapa']);
 Route::get('/riesgos/mapa', [RiesgoController::class, 'mapa']);
 Route::resource('riesgos',RiesgoController::class);
 
-Route::view('login', 'login');
+Route::resource('users', UserController::class);
+
+
+
 
 Route::resource('zonas', ZonaSeguraController::class);
+
+
+Route::post('users/login', [UserController::class, 'login'])->name('users.login');
+
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+
+
+Route::get('/admin/inicio', function () {
+    return view('layout.administrador');
+});
+
+Route::get('/visitante/inicio', function () {
+    return view('layout.visitante');
+});
+
+
+Route::get('/registrarse', function () {
+    return view('login.registrarse');  
+});

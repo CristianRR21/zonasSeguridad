@@ -36,7 +36,7 @@
 					<li class="nav-item"><a href="destination.html" class="nav-link">Zonas Seguras</a></li>
 					<li class="nav-item"><a href="hotel.html" class="nav-link">Puntos de Encuentro</a></li>
 
-					<a href="{{ url('login') }}" class="nav-link">Iniciar Sesión</a>
+					<!--<a href="{{ url('login') }}" class="nav-link">Iniciar Sesión</a>--->
 
 				</ul>
 			</div>
