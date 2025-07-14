@@ -47,6 +47,7 @@
                     <li class="nav-item"><a href="" class="nav-link">Zonas Seguras</a></li>
                     <li class="nav-item"><a href="{{ url('usuariosVista/usuarioPunto') }}" class="nav-link">Puntos de Encuentro</a></li>
                     <li class="nav-item">
+                        <!-- boton de cerrar sesion -->
                         <form method="POST" action="{{ route('logout') }}" style="display:d-inline;">
                             @csrf
                             <button type="submit" class="btn btn-primary btn-sm py-1">

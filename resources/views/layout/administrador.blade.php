@@ -127,7 +127,7 @@
         </ul>
       </div>
 
-      <!-- Botón de Salir -->
+       <!-- boton de cerrar sesion -->
       <div class="mx-4 mt-auto mb-4">
         <form method="POST" action="{{ route('logout') }}" class="w-full">
           @csrf
