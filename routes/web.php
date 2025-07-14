@@ -51,3 +51,5 @@ Route::get('/visitante/inicio', function () {
 Route::get('/registrarse', function () {
     return view('login.registrarse');  
 });
+
+Route::get('/riesgos/visitantes', [RiesgoController::class, 'visitantes']);
