@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Models\PuntoEncuentro;
 
 class UserController extends Controller
 {
@@ -119,5 +120,12 @@ public function store(Request $request)
         $request->session()->regenerateToken();
 
         return redirect('/login');
+    }
+
+    public function usuarioPunto()
+    {
+        //ver todos los puntos de encuentro
+        $puntoEncuentros=PuntoEncuentro::all();
+        return view('usuariosVista.usuarioPunto',compact('puntoEncuentros'));
     }
 }
