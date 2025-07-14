@@ -11,6 +11,10 @@
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- CSS locales -->
     <link rel="stylesheet" href="{{ asset('plantilla/visitante/css/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('plantilla/visitante/css/owl.carousel.min.css') }}" />
@@ -20,6 +24,10 @@
     <link rel="stylesheet" href="{{ asset('plantilla/visitante/css/jquery.timepicker.css') }}" />
     <link rel="stylesheet" href="{{ asset('plantilla/visitante/css/flaticon.css') }}" />
     <link rel="stylesheet" href="{{ asset('plantilla/visitante/css/style.css') }}" />
+
+	<!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAr2O1Qhpg0-4Y3J0nYabWkzCHi7GPzwps&libraries=places&callback=initMap"></script>
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -30,12 +38,19 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
+				<ul class="navbar-nav ml-auto align-items-center">
 					<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="about.html" class="nav-link">Zonas de Riesgo</a></li>
-					<li class="nav-item"><a href="destination.html" class="nav-link">Zonas Seguras</a></li>
-					<li class="nav-item"><a href="hotel.html" class="nav-link">Puntos de Encuentro</a></li>
-
+					<li class="nav-item"><a href="" class="nav-link">Zonas de Riesgo</a></li>
+					<li class="nav-item"><a href="" class="nav-link">Zonas Seguras</a></li>
+					<li class="nav-item"><a href="{{url('usuariosVista/usuarioPunto')}}" class="nav-link">Puntos de Encuentro</a></li> 
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}" style="display:d-inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-primary btn-sm py-1">
+                                <i class="fa fa-sign-out"></i> Cerrar Sesión
+                            </button>
+                        </form>
+                    </li>
 					<!--<a href="{{ url('login') }}" class="nav-link">Iniciar Sesión</a>--->
 
 				</ul>
@@ -44,7 +59,7 @@
 	</nav>
 	<!-- END nav -->
 	
-	<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_5.jpg');">
+	<div class="hero-wrap js-fullheight" style="background-image: url({{asset('plantilla/visitante/images/bg_5.jpg')}});">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
@@ -235,7 +250,7 @@
 					<div class="col-md-6">
 						<div class="row">
 							<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-								<div class="services services-1 color-1 d-block img" style="background-image: url(images/services-1.jpg);">
+								<div class="services services-1 color-1 d-block img" style="background-image: url({{asset('plantilla/visitante/images/services-1.jpg')}});">
 									<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-paragliding"></span></div>
 									<div class="media-body">
 										<h3 class="heading mb-3">Activities</h3>
@@ -244,7 +259,7 @@
 								</div>      
 							</div>
 							<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-								<div class="services services-1 color-2 d-block img" style="background-image: url(images/services-2.jpg);">
+								<div class="services services-1 color-2 d-block img" style="background-image: url({{asset('plantilla/visitante/images/services-2.jpg')}});">
 									<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
 									<div class="media-body">
 										<h3 class="heading mb-3">Travel Arrangements</h3>
@@ -253,7 +268,7 @@
 								</div>    
 							</div>
 							<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-								<div class="services services-1 color-3 d-block img" style="background-image: url(images/services-3.jpg);">
+								<div class="services services-1 color-3 d-block img" style="background-image: url({{asset('plantilla/visitante/images/services-3.jpg')}});">
 									<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-tour-guide"></span></div>
 									<div class="media-body">
 										<h3 class="heading mb-3">Private Guide</h3>
@@ -262,7 +277,7 @@
 								</div>      
 							</div>
 							<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-								<div class="services services-1 color-4 d-block img" style="background-image: url(images/services-4.jpg);">
+								<div class="services services-1 color-4 d-block img" style="background-image: url({{asset('plantilla/visitante/images/services-4.jpg')}});">
 									<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-map"></span></div>
 									<div class="media-body">
 										<h3 class="heading mb-3">Location Manager</h3>
@@ -276,7 +291,7 @@
 			</div>
 		</section>
 
-		<section class="ftco-section img ftco-select-destination" style="background-image: url(images/bg_3.jpg);">
+		<section class="ftco-section img ftco-select-destination" style="background-image: url({{asset('plantilla/visitante/images/bg_3.jpg')}});">
 			<div class="container">
 				<div class="row justify-content-center pb-4">
 					<div class="col-md-12 heading-section text-center ftco-animate">
@@ -291,7 +306,7 @@
 						<div class="carousel-destination owl-carousel ftco-animate">
 							<div class="item">
 								<div class="project-destination">
-									<a href="#" class="img" style="background-image: url(images/place-1.jpg);">
+									<a href="#" class="img" style="background-image: url({{asset('plantilla/visitante/images/place-1.jpg')}});">
 										<div class="text">
 											<h3>Philippines</h3>
 											<span>8 Tours</span>
@@ -301,7 +316,7 @@
 							</div>
 							<div class="item">
 								<div class="project-destination">
-									<a href="#" class="img" style="background-image: url(images/place-2.jpg);">
+									<a href="#" class="img" style="background-image: url({{asset('plantilla/visitante/images/place-2.jpg')}});">
 										<div class="text">
 											<h3>Canada</h3>
 											<span>2 Tours</span>
@@ -311,7 +326,7 @@
 							</div>
 							<div class="item">
 								<div class="project-destination">
-									<a href="#" class="img" style="background-image: url(images/place-3.jpg);">
+									<a href="#" class="img" style="background-image: url({{asset('plantilla/visitante/images/place-3.jpg')}});">
 										<div class="text">
 											<h3>Thailand</h3>
 											<span>5 Tours</span>
@@ -321,7 +336,7 @@
 							</div>
 							<div class="item">
 								<div class="project-destination">
-									<a href="#" class="img" style="background-image: url(images/place-4.jpg);">
+									<a href="#" class="img" style="background-image: url({{asset('plantilla/visitante/images/place-4.jpg')}});">
 										<div class="text">
 											<h3>Autralia</h3>
 											<span>5 Tours</span>
@@ -331,7 +346,7 @@
 							</div>
 							<div class="item">
 								<div class="project-destination">
-									<a href="#" class="img" style="background-image: url(images/place-5.jpg);">
+									<a href="#" class="img" style="background-image: url({{asset('plantilla/visitante/images/place-5.jpg')}});">
 										<div class="text">
 											<h3>Greece</h3>
 											<span>7 Tours</span>
@@ -356,7 +371,7 @@
 				<div class="row">
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
-							<a href="#" class="img" style="background-image: url(images/destination-1.jpg);">
+							<a href="#" class="img" style="background-image: url({{asset('plantilla/visitante/images/destination-1.jpg')}});">
 								<span class="price">$550/person</span>
 							</a>
 							<div class="text p-4">
@@ -373,7 +388,7 @@
 					</div>
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
-							<a href="#" class="img" style="background-image: url(images/destination-2.jpg);">
+							<a href="#" class="img" style="background-image: url({{asset('plantilla/visitante/images/destination-2.jpg')}});">
 								<span class="price">$550/person</span>
 							</a>
 							<div class="text p-4">
@@ -390,7 +405,7 @@
 					</div>
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
-							<a href="#" class="img" style="background-image: url(images/destination-3.jpg);">
+							<a href="#" class="img" style="background-image: url({{asset('plantilla/visitante/images/destination-3.jpg')}});">
 								<span class="price">$550/person</span>
 							</a>
 							<div class="text p-4">
@@ -408,7 +423,7 @@
 
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
-							<a href="#" class="img" style="background-image: url(images/destination-4.jpg);">
+							<a href="#" class="img" style="background-image: url({{asset('plantilla/visitante/images/destination-4.jpg')}});">
 								<span class="price">$550/person</span>
 							</a>
 							<div class="text p-4">
@@ -425,7 +440,7 @@
 					</div>
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
-							<a href="#" class="img" style="background-image: url(images/destination-5.jpg);">
+							<a href="#" class="img" style="background-image: url({{asset('plantilla/visitante/images/destination-5.jpg')}});">
 								<span class="price">$550/person</span>
 							</a>
 							<div class="text p-4">
@@ -442,7 +457,7 @@
 					</div>
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
-							<a href="#" class="img" style="background-image: url(images/destination-6.jpg);">
+							<a href="#" class="img" style="background-image: url({{asset('plantilla/visitante/images/destination-6.jpg')}});">
 								<span class="price">$550/person</span>
 							</a>
 							<div class="text p-4">
@@ -461,7 +476,7 @@
 			</div>
 		</section>
 		
-		<section class="ftco-section ftco-about img"style="background-image: url(images/bg_4.jpg);">
+		<section class="ftco-section ftco-about img"style="background-image: url({{asset('plantilla/visitante/images/bg_4.jpg')}});">
 			<div class="overlay"></div>
 			<div class="container py-md-5">
 				<div class="row py-md-5">
@@ -480,7 +495,7 @@
 					<div class="col-md-12 about-intro">
 						<div class="row">
 							<div class="col-md-6 d-flex align-items-stretch">
-								<div class="img d-flex w-100 align-items-center justify-content-center" style="background-image:url(images/about-1.jpg);">
+								<div class="img d-flex w-100 align-items-center justify-content-center" style="background-image:url({{asset('plantilla/visitante/images/about-1.jpg')}});">
 								</div>
 							</div>
 							<div class="col-md-6 pl-md-5 py-5">
@@ -499,7 +514,7 @@
 			</div>
 		</section>
 
-		<section class="ftco-section testimony-section bg-bottom" style="background-image: url(images/bg_1.jpg);">
+		<section class="ftco-section testimony-section bg-bottom" style="background-image: url({{asset('plantilla/visitante/images/bg_1.jpg')}});">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row justify-content-center pb-4">
@@ -523,7 +538,7 @@
 										</p>
 										<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 										<div class="d-flex align-items-center">
-											<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+											<div class="user-img" style="background-image: url({{asset('plantilla/visitante/images/person_1.jpg')}})"></div>
 											<div class="pl-3">
 												<p class="name">Roger Scott</p>
 												<span class="position">Marketing Manager</span>
@@ -544,7 +559,7 @@
 										</p>
 										<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 										<div class="d-flex align-items-center">
-											<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
+											<div class="user-img" style="background-image: url({{asset('plantilla/visitante/images/person_2.jpg')}})"></div>
 											<div class="pl-3">
 												<p class="name">Roger Scott</p>
 												<span class="position">Marketing Manager</span>
@@ -565,7 +580,7 @@
 										</p>
 										<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 										<div class="d-flex align-items-center">
-											<div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
+											<div class="user-img" style="background-image: url({{asset('plantilla/visitante/images/person_3.jpg')}})"></div>
 											<div class="pl-3">
 												<p class="name">Roger Scott</p>
 												<span class="position">Marketing Manager</span>
@@ -586,7 +601,7 @@
 										</p>
 										<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 										<div class="d-flex align-items-center">
-											<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+											<div class="user-img" style="background-image: url({{asset('plantilla/visitante/images/person_1.jpg')}})"></div>
 											<div class="pl-3">
 												<p class="name">Roger Scott</p>
 												<span class="position">Marketing Manager</span>
@@ -607,7 +622,7 @@
 										</p>
 										<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 										<div class="d-flex align-items-center">
-											<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
+											<div class="user-img" style="background-image: url({{asset('plantilla/visitante/images/person_2.jpg')}})"></div>
 											<div class="pl-3">
 												<p class="name">Roger Scott</p>
 												<span class="position">Marketing Manager</span>
@@ -634,7 +649,7 @@
 				<div class="row d-flex">
 					<div class="col-md-4 d-flex ftco-animate">
 						<div class="blog-entry justify-content-end">
-							<a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
+							<a href="blog-single.html" class="block-20" style="background-image: url({{asset('plantilla/visitante/images/image_1.jpg')}});">
 							</a>
 							<div class="text">
 								<div class="d-flex align-items-center mb-4 topp">
@@ -654,7 +669,7 @@
 					</div>
 					<div class="col-md-4 d-flex ftco-animate">
 						<div class="blog-entry justify-content-end">
-							<a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
+							<a href="blog-single.html" class="block-20" style="background-image: url({{asset('plantilla/visitante/images/image_2.jpg')}});">
 							</a>
 							<div class="text">
 								<div class="d-flex align-items-center mb-4 topp">
@@ -674,7 +689,7 @@
 					</div>
 					<div class="col-md-4 d-flex ftco-animate">
 						<div class="blog-entry">
-							<a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
+							<a href="blog-single.html" class="block-20" style="background-image: url({{asset('plantilla/visitante/images/image_3.jpg')}});">
 							</a>
 							<div class="text">
 								<div class="d-flex align-items-center mb-4 topp">
@@ -700,7 +715,7 @@
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-md-12 text-center">
-						<div class="img"  style="background-image: url(images/bg_2.jpg);">
+						<div class="img"  style="background-image: url({{asset('plantilla/visitante/images/bg_2.jpg')}});">
 							<div class="overlay"></div>
 							<h2>We Are Pacific A Travel Agency</h2>
 							<p>We can manage your dream building A small river named Duden flows by their place</p>
@@ -711,7 +726,7 @@
 			</div>
 		</section>
 
-		<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(images/bg_3.jpg);">
+		<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url({{asset('plantilla/visitante/images/bg_3.jpg')}});">
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-md pt-5">

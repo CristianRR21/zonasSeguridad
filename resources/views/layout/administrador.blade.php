@@ -129,12 +129,15 @@
 
       <!-- Botón de Salir -->
       <div class="mx-4 mt-auto mb-4">
-        <a href="#" class="w-full py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors dark:text-white dark:opacity-80 hover:bg-red-500/10 rounded-lg">
+        <form method="POST" action="{{ route('logout') }}" class="w-full">
+          @csrf
+        <button type="submit" class="w-full py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors dark:text-white dark:opacity-80 hover:bg-red-500/10 rounded-lg">
           <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
             <i class="relative top-0 text-sm leading-normal text-red-500 fas fa-sign-out-alt"></i>
           </div>
           <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Cerrar Sesión</span>
-        </a>
+        </button>
+        </form>
       </div>
     </aside>
 

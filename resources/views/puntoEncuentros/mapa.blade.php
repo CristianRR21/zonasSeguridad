@@ -8,7 +8,7 @@
                 Descargar imagen del mapa
             </button><br><br>
         </center>
-        <div id="mapa-puntos" style="border:1px solid black; height:300px;"></div><br>
+        <div id="mapa-puntos" style="border:1px solid black; height:550px;"></div><br>
     </div>
 </div>
 
@@ -21,7 +21,8 @@
           {
             center:latitud_longitud,
             zoom:8,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
+            mapTypeId:google.maps.MapTypeId.ROADMAP,
+            preserveDrawingBuffer: true 
           }
         );
 
@@ -41,21 +42,48 @@
     };
 </script>
 
-<script src="
-https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js">
-</script>
-
 <script>
-document.getElementById('btnDescargarMapa').addEventListener('click', function () {
-    const mapaDiv = document.getElementById('mapa-puntos');
+  document.getElementById('btnDescargarMapa').addEventListener('click', function() {
+    const btn = this;
+    btn.disabled = true;
+    btn.textContent = 'Generando imagen...';
 
-    html2canvas(mapaDiv).then(function (canvas) {
+    // Configuración básica
+    const center = "-0.9374805,-78.6161327";
+    const zoom = "8";
+    const size = "800x600";
+    const mapType = "roadmap";
+    const apiKey = "AIzaSyB53X59XDdO0JExB0Zi_bChS_2WDghlPzw";
+
+    // Generar marcadores
+    let markers = "";
+    @foreach($puntoEncuentros as $puntoTmp)
+        markers += `&markers=icon:https://icons.iconarchive.com/icons/hopstarter/sleek-xp-basic/48/User-Group-icon.png|{{$puntoTmp->latitud}},{{$puntoTmp->longitud}}`;
+    @endforeach
+
+    // Construir URL
+    const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${center}&zoom=${zoom}&size=${size}&maptype=${mapType}${markers}&key=${apiKey}`;
+    
+    // Crear imagen
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.src = staticMapUrl;
+    
+    img.onload = function() {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        
         const link = document.createElement('a');
         link.download = 'mapa_puntos.png';
-        link.href = canvas.toDataURL();
+        link.href = canvas.toDataURL('image/png');
         link.click();
-    });
+        
+        btn.disabled = false;
+        btn.textContent = 'Descargar imagen del mapa';
+    };
 });
 </script>
-
 @endsection
