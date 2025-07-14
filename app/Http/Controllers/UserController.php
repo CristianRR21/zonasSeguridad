@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PuntoEncuentro;
+use App\Models\Riesgo;
 
 class UserController extends Controller
 {
@@ -100,7 +101,7 @@ public function store(Request $request)
             if ($usuario->role === 'admin') {
                 return redirect('/admin/inicio');
             } elseif ($usuario->role === 'visitante') {
-                return redirect('/visitante/inicio');
+                return redirect('/usuariosVista/usuarioRiesgo');
             }
 
             Auth::logout();
@@ -128,4 +129,12 @@ public function store(Request $request)
         $puntoEncuentros=PuntoEncuentro::all();
         return view('usuariosVista.usuarioPunto',compact('puntoEncuentros'));
     }
+
+    public function usuarioRiesgo()
+    {
+        //ver todos los puntos de encuentro
+        $riesgos=Riesgo::all();
+        return view('usuariosVista.usuarioRiesgo');
+    }
+
 }

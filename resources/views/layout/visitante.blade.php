@@ -39,10 +39,13 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto align-items-center">
-				<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-				<a href="{{ url('/riesgos/visitantes') }}" class="nav-link">Zonas de Riesgo</a>
+
+				
+
+				<a href="{{ url('usuariosVista/usuarioRiesgo') }}" class="nav-link">Zonas de Riesgo</a>
 
 				<li class="nav-item"><a href="destination.html" class="nav-link">Zonas Seguras</a></li>
+
 				<li class="nav-item"><a href="{{url('usuariosVista/usuarioPunto')}}" class="nav-link">Puntos de Encuentro</a></li>
 				<li class="nav-item">
 					<!-- botón de cerrar sesión -->

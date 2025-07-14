@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 //para ver tarjetas de los puntos de encuentro 
 Route::get('/usuariosVista/usuarioPunto', [UserController::class, 'usuarioPunto']);
+Route::get('/usuariosVista/usuarioRiesgo', [UserController::class, 'usuarioRiesgo']);
+
 
 Route::get('/puntoEncuentros/mapa', [PuntoEncuentroController::class, 'mapa']);
 Route::resource('puntoEncuentros', PuntoEncuentroController::class);
