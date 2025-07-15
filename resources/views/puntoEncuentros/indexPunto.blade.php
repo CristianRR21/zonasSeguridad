@@ -76,7 +76,7 @@
             button.addEventListener('click', function(event) {
                 event.preventDefault();
                 Swal.fire({
-                    title: '¿Estás seguro de eliminar este circuito?',
+                    title: '¿Estás seguro de eliminar el punto de encuentro?',
                     text: 'Esta acción no se puede deshacer.',
                     icon: 'warning',
                     showCancelButton: true,
@@ -85,8 +85,8 @@
                     confirmButtonText: 'Sí, eliminar',
                     cancelButtonText: 'Cancelar',
                     customClass: {
-                        confirmButton: 'no-hover-confirm text-black',
-                        cancelButton: 'no-hover-cancel text-black'
+                        confirmButton: 'no-hover-confirm ',
+                        cancelButton: 'no-hover-cancel '
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {

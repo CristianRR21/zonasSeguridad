@@ -16,8 +16,8 @@
                     <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingrese el nombre ">
                 </div>
                 <div class="mb-3">
-                    <label for="descripion" class="form-label">Descripcion</label>
-                    <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Ingrese la descripcion" >
+                    <label for="descripion" class="form-label">Descripción</label>
+                    <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Ingrese la descripción" >
                 </div>
 
 
@@ -26,9 +26,9 @@
 
                   <select name="nivel" id="nivel" class="form-control">
                   <option value="">---Seleccione una opción---</option>
-                  <option value="ALTO">Alta</option>
-                  <option value="MEDIO">Media</option>
-                  <option value="BAJO">Baja</option>
+                  <option value="ALTO">ALTO</option>
+                  <option value="MEDIO">MEDIO</option>
+                  <option value="BAJO">BAJO</option>
               </select><br>
                 </div>
                 

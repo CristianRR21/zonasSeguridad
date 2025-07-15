@@ -105,7 +105,11 @@
                     confirmButtonColor: '#d33',
                     cancelButtonColor: '#3085d6',
                     confirmButtonText: 'Sí, eliminar',
-                    cancelButtonText: 'Cancelar'
+                    cancelButtonText: 'Cancelar',
+                    customClass: {
+                        confirmButton: 'no-hover-confirm text-black',
+                        cancelButton: 'no-hover-cancel text-black'
+                    }
                 }).then((result) => {
                     if (result.isConfirmed) {
                         this.closest('form').submit();

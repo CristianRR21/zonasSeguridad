@@ -43,7 +43,7 @@ class PuntoEncuentroController extends Controller
             'responsable' => $request->responsable,
         ];
         PuntoEncuentro::create($datos);
-        return redirect()->route('puntoEncuentros.index');
+        return redirect()->route('puntoEncuentros.index')->with('success', 'Punto de Encuentro creado correctamente.');
     }
 
     /**

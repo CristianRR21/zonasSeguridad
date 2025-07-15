@@ -31,14 +31,13 @@
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
-                        <th>Descripcion</th>
+                        <th>Descripción</th>
                         <th>Nivel</th>
                         <th>Coordenadas Uno</th>
                         <th>Coordenadas Dos</th>
                         <th>Coordenadas Tres</th>
                         <th>Coordenadas Cuatro</th>
-                        <th>Coordenadas Cinco</th>
-                        
+                        <th>Coordenadas Cinco</th>                       
               
                         <th>Acciones</th>
                     </tr>
@@ -117,7 +116,12 @@
                     confirmButtonColor: '#d33',
                     cancelButtonColor: '#3085d6',
                     confirmButtonText: 'Sí, eliminar',
-                    cancelButtonText: 'Cancelar'
+                    cancelButtonText: 'Cancelar',
+                    
+                   customClass: {
+                        confirmButton: 'no-hover-confirm ',
+                        cancelButton: 'no-hover-cancel '
+                    }
                 }).then((result) => {
                     if (result.isConfirmed) {
                         this.closest('form').submit();
@@ -127,4 +131,5 @@
         });
     });
 </script>
+
 @endsection

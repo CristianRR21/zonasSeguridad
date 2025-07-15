@@ -19,7 +19,7 @@
                     <input type="text" name="nombre" id="nombre" class="form-control" value="{{ $riesgo->nombre }}" placeholder="Ingrese el nombre ">
                 </div>
                 <div class="mb-3">
-                    <label for="descripion" class="form-label">Descripcion</label>
+                    <label for="descripion" class="form-label">Descripción</label>
                     <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{ $riesgo->descripcion }}"placeholder="Ingrese la descripcion" >
                 </div>
 
@@ -149,7 +149,7 @@
         </div>
     </div>
     </div>
-    xxxxx
+
 </div>
 </div>
 
@@ -429,7 +429,7 @@ lng5= {{$riesgo->longitudCinco}};
                 maxlength: "La descripción no debe superar los 255 caracteres"
             },
             nivel: {
-                required: "Por favor ingrese el nivel de riesgo"
+                required: "Por favor seleccione el nivel de riesgo"
             },
             latitudUno: 
             { required: "Seleccione la coordenada 1 en el mapa" },
