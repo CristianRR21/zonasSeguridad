@@ -18,7 +18,9 @@ Route::get('/', function () {
 });
 
 //para ver tarjetas de los puntos de encuentro 
+
 Route::get('/usuariosVista/usuarioPunto', [UserController::class, 'usuarioPunto']);
+
 Route::get('/usuariosVista/usuarioRiesgo', [UserController::class, 'usuarioRiesgo']);
 
 
@@ -47,9 +49,6 @@ Route::get('/admin/inicio', function () {
     return view('layout.administrador');
 });
 
-Route::get('/visitante/inicio', function () {
-    return view('layout.visitante');
-});
 
 
 Route::get('/registrarse', function () {

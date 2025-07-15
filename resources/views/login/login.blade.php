@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('plantilla/administrador/build/assets/img/apple-icon.png') }}" />
     <link rel="icon" type="image/png" href="{{ asset('plantilla/administrador/build/assets/img/favicon.png') }}" />
-    <title>Iniciar Sesion</title>
+    <title>Iniciar Sesión</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Font Awesome Icons -->
@@ -38,7 +38,7 @@
               <div class="flex flex-col w-full max-w-full px-3 mx-auto lg:mx-0 shrink-0 md:flex-0 md:w-7/12 lg:w-5/12 xl:w-4/12">
                 <div class="relative flex flex-col min-w-0 break-words bg-transparent border-0 shadow-none lg:py4 dark:bg-gray-950 rounded-2xl bg-clip-border">
                   <div class="p-6 pb-0 mb-0">
-                    <h4 class="font-bold">Iniciar Sesion</h4>
+                    <h4 class="font-bold">Iniciar Sesión</h4>
                   </div>
                   <div class="flex-auto p-6">
                       <form method="POST" action="{{ route('users.login') }}">

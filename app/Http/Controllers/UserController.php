@@ -125,16 +125,16 @@ public function store(Request $request)
 
     public function usuarioPunto()
     {
-        //ver todos los puntos de encuentro
+        //ver todos los puntos de encuentro USUARIOS
         $puntoEncuentros=PuntoEncuentro::all();
         return view('usuariosVista.usuarioPunto',compact('puntoEncuentros'));
     }
 
     public function usuarioRiesgo()
     {
-        //ver todos los puntos de encuentro
+        //ver todos las zonas de riesgos USUARIOS
         $riesgos=Riesgo::all();
-        return view('usuariosVista.usuarioRiesgo');
+        return view('usuariosVista.usuarioRiesgo',compact('riesgos'));
     }
 
 }

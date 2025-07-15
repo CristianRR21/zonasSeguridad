@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Pacific - Free Bootstrap 4 Template by Colorlib</title>
+    <title>GeoAlerta</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -28,22 +28,24 @@
     <link rel="stylesheet" href="{{ asset('plantilla/visitante/css/style.css') }}" />
 
     <!-- Google Maps API -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAr2O1Qhpg0-4Y3J0nYabWkzCHi7GPzwps&libraries=places&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG_To8UqS__6eQgWi_lDrb0rOtdw1bQGo&libraries=places&callback=initMap"></script>
+
 
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Pacific<span>Travel Agency</span></a>
+            <a class="navbar-brand" href="{{ url('usuariosVista/usuarioRiesgo') }}">GeoAlerta<span></span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto align-items-center">
-                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">Zonas de Riesgo</a></li>
+    				<li class="nav-item active"><a href="{{ url('usuariosVista/usuarioRiesgo') }}" class="nav-link">Home</a></li>
+    				<li class="nav-item active"><a href="{{ url('usuariosVista/usuarioRiesgo') }}" class="nav-link">Zonas de Riesgo</a></li>
+
                     <li class="nav-item"><a href="" class="nav-link">Zonas Seguras</a></li>
                     <li class="nav-item"><a href="{{ url('usuariosVista/usuarioPunto') }}" class="nav-link">Puntos de Encuentro</a></li>
                     <li class="nav-item">
@@ -66,9 +68,9 @@
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
                 <div class="col-md-7 ftco-animate">
-                    <span class="subheading">Welcome to Pacific</span>
-                    <h1 class="mb-4">Discover Your Favorite Place with Us</h1>
-                    <p class="caps">Travel to the any corner of the world, without going around in circles</p>
+                    <span class="subheading">Bienvenido a GeoAlerta</span>
+                    <h1 class="mb-4">Descubre la seguridad de tu comunidad con nuestro Sistema de Información Geográfica</h1>
+                    <p class="caps">Visualiza zonas de riesgo, zonas seguras y puntos de encuentro seguros en mapas interactivos</p>
                 </div>
                 <a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
                     <span class="fa fa-play"></span>
