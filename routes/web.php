@@ -23,6 +23,9 @@ Route::get('/usuariosVista/usuarioPunto', [UserController::class, 'usuarioPunto'
 
 Route::get('/usuariosVista/usuarioRiesgo', [UserController::class, 'usuarioRiesgo']);
 
+Route::get('/usuariosVista/usuarioZona', [UserController::class, 'usuarioZona']);
+
+
 
 Route::get('/puntoEncuentros/mapa', [PuntoEncuentroController::class, 'mapa']);
 Route::resource('puntoEncuentros', PuntoEncuentroController::class);

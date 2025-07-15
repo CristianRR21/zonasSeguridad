@@ -46,7 +46,7 @@
     				<li class="nav-item active"><a href="{{ url('usuariosVista/usuarioRiesgo') }}" class="nav-link">Home</a></li>
     				<li class="nav-item active"><a href="{{ url('usuariosVista/usuarioRiesgo') }}" class="nav-link">Zonas de Riesgo</a></li>
 
-                    <li class="nav-item"><a href="" class="nav-link">Zonas Seguras</a></li>
+                    <li class="nav-item"><a href="{{ url('usuariosVista/usuarioZona') }}" class="nav-link">Zonas Seguras</a></li>
                     <li class="nav-item"><a href="{{ url('usuariosVista/usuarioPunto') }}" class="nav-link">Puntos de Encuentro</a></li>
                     <li class="nav-item">
                         <!-- boton de cerrar sesion -->

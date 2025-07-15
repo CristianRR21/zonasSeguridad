@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PuntoEncuentro;
 use App\Models\Riesgo;
+use App\Models\ZonaSegura;
+
 
 class UserController extends Controller
 {
@@ -136,5 +138,14 @@ public function store(Request $request)
         $riesgos=Riesgo::all();
         return view('usuariosVista.usuarioRiesgo',compact('riesgos'));
     }
+
+
+    public function usuarioZona()
+    {
+        //ver todos las zonas de riesgos USUARIOS
+        $zonas=ZonaSegura::all();
+        return view('usuariosVista.usuarioZona',compact('zonas'));
+    }
+    
 
 }
