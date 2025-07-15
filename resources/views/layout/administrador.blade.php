@@ -124,6 +124,19 @@
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Puntos de Encuentro</span>
             </a>
           </li>
+
+
+          <li class="mt-0.5 w-full">
+            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors 
+              {{ request()->routeIs('riesgos.*') ? 'bg-blue-500/13 dark:text-white dark:opacity-80 font-semibold text-slate-700' : 'dark:text-white dark:opacity-80' }}" 
+              href="">
+              <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                <i class="relative top-0 text-sm leading-normal text-red-500 fas fa-chart-bar"></i>
+              </div>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Reporte</span>
+            </a>
+          </li>
+
         </ul>
       </div>
 
@@ -172,17 +185,32 @@
     </main>
 
 @if(session('mensaje'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         Swal.fire({
             title: 'Confirmación!',
             text: "{{ session('mensaje') }}",
-            icon: 'success'
+            icon: 'success',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#3085d6',
+            customClass: {
+                confirmButton: 'btn-confirmacion'
+            },
+            buttonsStyling: false
         });
     </script>
 @endif
 
-
 <style>
+  .btn-confirmacion{
+      background-color:  #7464e4  !important;
+      border-radius: 7px;
+      height:40px;
+      width:95px;
+      color: white !important;
+
+
+  }
     .no-hover-confirm {
         background-color: #dc3545 !important;
         color: white !important;

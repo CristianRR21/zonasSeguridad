@@ -190,6 +190,8 @@ lng5= {{$riesgo->longitudCinco}};
           }
         );
         var marcadorUno=new google.maps.Marker({
+          icon: "https://icons.iconarchive.com/icons/aha-soft/desktop-halloween/48/Skull-and-bones-icon.png",
+
           position:{lat: lat1, lng: lng1},
           map:mapaUno,
           title:"Seleccione la coordenada 1",
@@ -217,6 +219,8 @@ lng5= {{$riesgo->longitudCinco}};
           }
         );
         var marcadorDos=new google.maps.Marker({
+          icon: "https://icons.iconarchive.com/icons/aha-soft/desktop-halloween/48/Skull-and-bones-icon.png",
+
           position:{lat: lat2, lng: lng2},
           map:mapaDos,
           title:"Seleccione la coordenada 2",
@@ -245,6 +249,8 @@ lng5= {{$riesgo->longitudCinco}};
           }
         );
         var marcadorTres=new google.maps.Marker({
+          icon: "https://icons.iconarchive.com/icons/aha-soft/desktop-halloween/48/Skull-and-bones-icon.png",
+
           position:{lat: lat3, lng: lng3},
           map:mapaTres,
           title:"Seleccione la coordenada 3",
@@ -274,6 +280,8 @@ lng5= {{$riesgo->longitudCinco}};
           }
         );
         var marcadorCuatro=new google.maps.Marker({
+          icon: "https://icons.iconarchive.com/icons/aha-soft/desktop-halloween/48/Skull-and-bones-icon.png",
+
           position:{lat: lat4, lng: lng4},
           map:mapaCuatro,
           title:"Seleccione la coordenada 4",
@@ -300,6 +308,8 @@ lng5= {{$riesgo->longitudCinco}};
           }
         );
         var marcadorCinco=new google.maps.Marker({
+          icon: "https://icons.iconarchive.com/icons/aha-soft/desktop-halloween/48/Skull-and-bones-icon.png",
+
           position:{lat: lat5, lng: lng5},
           map:mapaCinco,
           title:"Seleccione la coordenada 5",

@@ -45,7 +45,7 @@ class ZonaSeguraController extends Controller
 
         ZonaSegura::create($request->all());
 
-        return redirect()->route('zonas.index')->with('success', 'Zona segura creada correctamente.');
+        return redirect()->route('zonas.index')->with('mensaje', 'Zona segura creada correctamente.');
     }
 
     /**
@@ -81,7 +81,7 @@ class ZonaSeguraController extends Controller
         $zona = ZonaSegura::findOrFail($id);
         $zona->update($request->all());
 
-        return redirect()->route('zonas.index')->with('success', 'Zona segura actualizada correctamente.');
+        return redirect()->route('zonas.index')->with('mensaje', 'Zona segura actualizada correctamente.');
     }
 
     /**
@@ -92,6 +92,6 @@ class ZonaSeguraController extends Controller
         $zona = ZonaSegura::findOrFail($id);
         $zona->delete();
 
-        return redirect()->route('zonas.index')->with('success', 'Zona segura eliminada correctamente.');
+        return redirect()->route('zonas.index')->with('mensaje', 'Zona segura eliminada correctamente.');
     }
 }

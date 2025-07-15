@@ -104,7 +104,7 @@ class RiesgoController extends Controller
         ];
         $riesgo->update($datos);
        
-        return redirect()->route('riesgos.index')->with('success', 'Zona de riesgo actualizada con éxito');
+        return redirect()->route('riesgos.index')->with('mensaje', 'Zona de riesgo actualizada con éxito');
 
 
     }
@@ -119,7 +119,7 @@ class RiesgoController extends Controller
         $riesgo = Riesgo::findOrFail($id);
         $riesgo->delete();
 
-        return redirect()->route('riesgos.index')->with('success', 'Zona de riesgo eliminada correctamente.');
+        return redirect()->route('riesgos.index')->with('mensaje', 'Zona de riesgo eliminada correctamente.');
     }
 
     

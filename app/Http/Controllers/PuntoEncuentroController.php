@@ -43,7 +43,7 @@ class PuntoEncuentroController extends Controller
             'responsable' => $request->responsable,
         ];
         PuntoEncuentro::create($datos);
-        return redirect()->route('puntoEncuentros.index')->with('success', 'Punto de Encuentro creado correctamente.');
+        return redirect()->route('puntoEncuentros.index')->with('mensaje', 'Punto de Encuentro creado correctamente.');
     }
 
     /**
@@ -72,7 +72,7 @@ class PuntoEncuentroController extends Controller
         //actualizar al editar los datos
         $punto = PuntoEncuentro::findOrFail($id);
         $punto->update($request->all());
-        return redirect()->route('puntoEncuentros.index')->with('success', 'Punto de Encuentro actualizado correctamente.');
+        return redirect()->route('puntoEncuentros.index')->with('mensaje', 'Punto de Encuentro actualizado correctamente.');
     }
 
     public function destroy(string $id)
@@ -80,6 +80,6 @@ class PuntoEncuentroController extends Controller
         //eliminar
         $punto = PuntoEncuentro::findOrFail($id);
         $punto->delete();
-        return redirect()->route('puntoEncuentros.index')->with('success', 'Punto de Encuentro eliminado correctamente.');
+        return redirect()->route('puntoEncuentros.index')->with('mensaje', 'Punto de Encuentro eliminado correctamente.');
     }
 }

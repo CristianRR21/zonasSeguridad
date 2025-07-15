@@ -46,7 +46,7 @@ public function store(Request $request)
     User::create($datos);
 
     // Redirección al login con mensaje
-    return redirect()->route('login')->with('success', 'Usuario registrado correctamente.');
+    return redirect()->route('login')->with('mensaje', 'Usuario registrado correctamente.');
 }   
 
 
