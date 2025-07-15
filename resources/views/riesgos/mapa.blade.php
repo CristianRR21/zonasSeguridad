@@ -4,8 +4,21 @@
 <div class="container mt-5">
     <div class="card shadow-lg p-4">
         <h1>Mapa de Zonas de Riesgo</h1><br>
+            <div class="mb-3">
+            <label for="filtroRiesgo" class="form-label fw-bold">Filtrar por Nivel de Riesgo:</label>
+            <select id="filtroRiesgo" class="form-select w-auto">
+                <option value="TODOS">Mostrar todos</option>
+                <option value="ALTA">ALTA</option>
+                <option value="MEDIA">MEDIA</option>
+                <option value="BAJA">BAJA</option>
+            </select>
+             </div>
         <div id="mapa-riesgos" style="border:1px solid black; height:400px;"></div><br>
+        
     </div>
+
+
+
 </div>
 
 

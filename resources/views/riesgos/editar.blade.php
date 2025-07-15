@@ -1,13 +1,14 @@
 @extends('layout.administrador')
 @section('contenido')
-<h1>desde la edicion</h1>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG_To8UqS__6eQgWi_lDrb0rOtdw1bQGo&libraries=places&callback=initMap"></script>
+
 <div class="container mt-5">
     <div class="card shadow-lg p-4">
     
     <div class='row'>
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <h1 class="text-center mb-4">Nueva Zona de Riesgo</h1>
+            <h1 class="text-center mb-4">Editar Zona de Riesgo</h1>
             <form action="{{ route('riesgos.update' ,$riesgo->id) }}" method="POST" id="frm_riesgo">
                 @csrf
                 @method('PUT') 
@@ -21,10 +22,18 @@
                     <label for="descripion" class="form-label">Descripcion</label>
                     <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{ $riesgo->descripcion }}"placeholder="Ingrese la descripcion" >
                 </div>
-                 <div class="mb-3">
-                    <label for="nivel" class="form-label">Nivel de riesgo </label>
-                    <input type="text" name="nivel" id="nivel" class="form-control" value="{{ $riesgo->nivel}}"placeholder="Ingrese el nivel" >
+
+
+                <div class="mb-3">
+                    <label for="nivel" class="form-label">Nivel de riesgo</label>
+                    <select name="nivel" id="nivel" class="form-control">
+                        <option value="">---Seleccione una opción---</option>
+                        <option value="ALTO" {{ $riesgo->nivel === 'ALTO' ? 'selected' : '' }}>ALTO</option>
+                        <option value="MEDIO" {{ $riesgo->nivel === 'MEDIO' ? 'selected' : '' }}>MEDIO</option>
+                        <option value="BAJO" {{ $riesgo->nivel === 'BAJO' ? 'selected' : '' }}>BAJO</option>
+                    </select>
                 </div>
+
                 
                 <div class="row">
                     <div class="col-md-5">
@@ -110,8 +119,17 @@
                 </div>
                 <br>
 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="mapa-poligono" 
+                        style="height:500px; width:100%;
+                          border:2px solid blue;">
 
+                        </div>
+                              <br>
+                    </div>
                
+     
                 <center>
                     <button type="submit" class="btn btn-outline-success">
                         <i class="fa fa-save"></i> Actualizar
@@ -121,19 +139,17 @@
                     <a href="{{ route('riesgos.index') }}" class="btn btn-outline-danger">
                         <i class="fa fa-times"></i> Cancelar
                     </a>
+                    &nbsp;&nbsp;&nbsp;
+                      <button type="button" class="btn btn-outline-primary" 
+                        onclick="graficarZona();">
+                        Graficar Zona de Riesgo
+                     </button>
                 </center>
             </form>
         </div>
     </div>
     </div>
-    <div class="row">
-    <div class="col-md-12">
-        <div id="mapa-poligono" 
-         style="height:500px; width:100%;
-          border:2px solid blue;">
-
-        </div>
-    </div>
+    xxxxx
 </div>
 </div>
 
@@ -311,7 +327,7 @@ lng5= {{$riesgo->longitudCinco}};
       }
 
 
-      function graficarPredio(){
+      function graficarZona(){
             //alert("Graficando");
 
             //Capturando coordenadas seleccionas en el mapa

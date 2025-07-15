@@ -102,7 +102,7 @@
                                     <div class="row mb-5">
                                         <div class="col-md pt-5">
                                             <div class="ftco-footer-widget pt-md-5 mb-4">
-                                                <h2 class="ftco-heading-2">About</h2>
+                                                <h2 class="ftco-heading-2">Acerca de Nosotros</h2>
                                                 <p>GeoAlerta es una plataforma web de gestión de zonas de riesgo, zonas seguras y puntos seguros. Visualiza mapas interactivos.</p>
 
                                                 <ul class="ftco-footer-social list-unstyled float-md-left float-lft">

@@ -32,7 +32,7 @@
                         <th>#</th>
                         <th>Nombre</th>
                         <th>Descripcion</th>
-                        <th>Nivel de Riesgo</th>
+                        <th>Nivel</th>
                         <th>Coordenadas Uno</th>
                         <th>Coordenadas Dos</th>
                         <th>Coordenadas Tres</th>
@@ -49,7 +49,16 @@
                             <td>{{ $riesgo->id }}</td>
                             <td>{{ $riesgo->nombre }}</td>
                             <td>{{ $riesgo->descripcion }}</td>
-                            <td>{{ $riesgo->nivel }}</td>
+                            <td>
+                                    <span class="badge 
+                                    @if($riesgo->nivel === 'BAJO') bg-success 
+                                    @elseif($riesgo->nivel === 'MEDIO') bg-warning text-dark 
+                                    @elseif($riesgo->nivel === 'ALTO') bg-danger }
+                                    @else bg-secondary
+                                    @endif">   
+                                    {{ $riesgo->nivel }}                                
+                                     </span>
+                            </td>                            
                             <td>Latitud:{{ $riesgo->latitudUno }} <br>Longuitud:{{ $riesgo->longitudUno }}</td>
                             <td>Latitud:{{ $riesgo->latitudDos }}<br>Longuitud:{{ $riesgo->longitudDos }}</td>
                             <td>Latitud:{{ $riesgo->latitudTres }}<br>Longuitud:{{ $riesgo->longitudTres }}</td>

@@ -1,5 +1,7 @@
 @extends('layout.administrador')
 @section('contenido')
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG_To8UqS__6eQgWi_lDrb0rOtdw1bQGo&libraries=places&callback=initMap"></script>
+
 <div class="container mt-5">
     <div class="card shadow-lg p-4">
     
@@ -17,9 +19,17 @@
                     <label for="descripion" class="form-label">Descripcion</label>
                     <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Ingrese la descripcion" >
                 </div>
-                 <div class="mb-3">
-                    <label for="nivel" class="form-label">Nivel de riesgo </label>
-                    <input type="text" name="nivel" id="nivel" class="form-control" placeholder="Ingrese el nivel" >
+
+
+                
+                <div class="mb-3">      
+
+                  <select name="nivel" id="nivel" class="form-control">
+                  <option value="">---Seleccione una opción---</option>
+                  <option value="ALTO">Alta</option>
+                  <option value="MEDIO">Media</option>
+                  <option value="BAJO">Baja</option>
+              </select><br>
                 </div>
                 
                 <div class="row">
@@ -400,7 +410,7 @@
                 maxlength: "La descripción no debe superar los 255 caracteres"
             },
             nivel: {
-                required: "Por favor ingrese el nivel de riesgo"
+                required: "Por favor seleccione el nivel de riesgo"
             },
             latitudUno: 
             { required: "Seleccione la coordenada 1 en el mapa" },
