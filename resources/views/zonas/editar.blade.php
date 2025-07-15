@@ -84,6 +84,8 @@
                 });
 
                 const marcador = new google.maps.Marker({
+                    icon: "https://icons.iconarchive.com/icons/icons-land/flat-vector-map-marker/48/Marker-1-PushPin-Green-icon.png",
+
                     position: ubicacionInicial,
                     map: mapa,
                     title: "Ubicación actual de la zona",
