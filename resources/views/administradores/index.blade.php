@@ -1,40 +1,14 @@
 @extends('layout.administrador')
-
 @section('contenido')
 
 <div class="container mt-5">
   <div class="row g-4">
-
-    <!-- Formulario para crear administrador -->
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="card shadow border-0">
         <div class="card-body">
           <h4 class="card-title mb-4">Registrar Nuevo Administrador</h4>
 
-          @if ($errors->any())
-              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <ul class="mb-0">
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-              </div>
-          @endif
 
-          @if(session('mensaje'))
-              <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-              <script>
-                  Swal.fire({
-                      icon: 'success',
-                      title: '{{ session("mensaje") }}',
-                      showConfirmButton: false,
-                      timer: 2000,
-                      toast: true,
-                      position: 'top-end'
-                  });
-              </script>
-          @endif
 
           <form action="{{ route('users.store') }}" method="POST">
               @csrf
@@ -66,12 +40,12 @@
     </div>
 
     <!-- Tabla de usuarios -->
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="card shadow border-0">
         <div class="card-body">
           <h4 class="card-title mb-4">Administradores Registrados</h4>
           <div class="table-responsive">
-            <table class="table table-hover table-bordered align-middle">
+            <table class="table table-hover table-bordered align-middle" id="tbl-admin">
               <thead class="table-light text-center">
                 <tr>
                   <th>#</th>
@@ -90,13 +64,24 @@
                         <td>{{ $usuario->email }}</td>
                         <td>{{ $usuario->role }}</td>
                         <td>
-                            <a href="">Editar</a>
-                            <a href="">Eliminar</a>
-                        </td>
-                    </tr>
-                @endforeach
-        
-              </tbody>
+                            <a href="" class="btn btn-outline-warning btn-sm me-1" title="Editar">
+                                                    <i class="fa fa-pen"></i>
+                                                </a>
+                                                <form action="{{ route('users.destroy', $usuario->id) }}" method="POST" style="display:inline;" class="form-eliminar">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-outline-danger btn-sm btn-eliminar">
+                                                        <i class="fa fa-trash"></i> Eliminar
+                                                        </button>
+
+
+                                                </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                        
+                            </tbody>
+                         <td>
             </table>
           </div>
         </div>
@@ -106,4 +91,59 @@
   </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.btn-eliminar').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                Swal.fire({
+                    title: '¿Estás seguro de eliminar este administrador?',
+                    text: 'Esta acción no se puede deshacer.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar',
+                    customClass: {
+                        confirmButton: 'no-hover-confirm',
+                        cancelButton: 'no-hover-cancel'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.closest('form').submit();
+                    }
+                });
+            });
+        });
+    });
+</script>
+<script>
+    let table = new DataTable('#tbl-admin', {
+    layout: {
+        topStart: {
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+        }
+    },
+    language: {
+        url: 'https://cdn.datatables.net/plug-ins/2.3.2/i18n/es-ES.json',
+    },
+});
+    
+</script>
+@if(session('mensaje'))
+              <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+              <script>
+                  Swal.fire({
+                      icon: 'success',
+                      title: '{{ session("mensaje") }}',
+                      showConfirmButton: false,
+                      timer: 2000,
+                      toast: true,
+                      position: 'top-end'
+                  });
+              </script>
+          @endif
+
+          
 @endsection

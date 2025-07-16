@@ -102,10 +102,19 @@ public function store(Request $request)
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $usuario = User::findOrFail($id);
+
+        if ($usuario->role !== 'admin') {
+            return redirect()->back()->with('error', 'No se puede eliminar este usuario.');
+        }
+
+        $usuario->delete();
+
+        return redirect('/admin/Index')->with('mensaje', 'Administrador eliminado correctamente.');
     }
+
 
   
   public function login(Request $request)
