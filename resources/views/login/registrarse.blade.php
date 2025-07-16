@@ -140,7 +140,7 @@
   
 
 <script>
-    $("form").validate({
+    $("#form").validate({
       rules: {
         name: {
           required: true,

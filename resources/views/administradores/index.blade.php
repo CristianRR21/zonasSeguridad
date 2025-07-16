@@ -10,27 +10,27 @@
 
 
 
-          <form action="{{ route('users.store') }}" method="POST">
+          <form action="{{ route('users.store') }}" method="POST" id="form">
               @csrf
               <div class="mb-3">
                   <label for="name" class="form-label">Nombre completo</label>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="Nombre del administrador" required>
+                  <input type="text" class="form-control" name="name" id="name" placeholder="Ingrese el nombre del administrador" >
               </div>
 
               <div class="mb-3">
                   <label for="email" class="form-label">Correo electrónico</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="correo@ejemplo.com" required>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Ingrese el correo del administrador" >
               </div>
 
               <div class="mb-3">
                   <label for="password" class="form-label">Contraseña</label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="********" required>
+                  <input type="password" class="form-control" name="password" id="password" placeholder="********">
               </div>
 
               <input type="hidden" name="role" value="admin">
 
               <div class="text-end">
-                  <button type="submit" class="btn btn-primary">
+                  <button type="submit" class="btn btn-outline-primary" >
                       Crear Administrador
                   </button>
               </div>
@@ -39,7 +39,6 @@
       </div>
     </div>
 
-    <!-- Tabla de usuarios -->
     <div class="col-md-12">
       <div class="card shadow border-0">
         <div class="card-body">
@@ -118,6 +117,7 @@
         });
     });
 </script>
+
 <script>
     let table = new DataTable('#tbl-admin', {
     layout: {
@@ -131,19 +131,43 @@
 });
     
 </script>
-@if(session('mensaje'))
-              <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-              <script>
-                  Swal.fire({
-                      icon: 'success',
-                      title: '{{ session("mensaje") }}',
-                      showConfirmButton: false,
-                      timer: 2000,
-                      toast: true,
-                      position: 'top-end'
-                  });
-              </script>
-          @endif
+
+
+<script>
+    $("#form").validate({
+      rules: {
+        name: {
+          required: true,
+          minlength: 5,
+          maxlength: 50
+        },
+        email: {
+          required: true,
+          email: true
+        },
+        password: {
+          required: true,
+          minlength: 6
+        }
+      },
+      messages: {
+        name: {
+          required: "Por favor ingrese el nombre",
+          minlength: "El nombre debe tener al menos 5 caracteres",
+          maxlength: "El nombre no puede superar los 50 caracteres"
+        },
+        email: {
+          required: "Por favor ingrese el correo electrónico",
+          email: "Por favor ingresa un correo válido"
+        },
+        password: {
+          required: "Por favor ingrese una contraseña",
+          minlength: "La contraseña debe tener al menos 6 caracteres"
+        }
+      }
+    });
+ 
+</script>
 
           
 @endsection
