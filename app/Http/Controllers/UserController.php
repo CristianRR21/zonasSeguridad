@@ -12,7 +12,11 @@ use App\Models\ZonaSegura;
 
 
 class UserController extends Controller
+
+
 {
+
+    
     /**
      * Display a listing of the resource.
      */
@@ -151,6 +155,7 @@ public function store(Request $request)
         $zonas=ZonaSegura::all();
         return view('usuariosVista.usuarioZona',compact('zonas'));
     }
+    
     
 
 }
