@@ -43,8 +43,7 @@ public function store(Request $request)
 {
     
     // Validación
-    
-   
+       
     if (User::where('email', $request->email)->exists()) {
     return redirect()->back()
         ->withInput()
@@ -88,16 +87,49 @@ public function store(Request $request)
      */
     public function edit(string $id)
     {
-        //
+        $usuario = User::findOrFail($id);
+
+        if ($usuario->role !== 'admin') {
+            return redirect()->back()->with('error', 'Solo se pueden editar administradores.');
+        }
+
+        return view('administradores.edit', compact('usuario'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+public function update(Request $request, string $id)
+{
+
+    $usuario = User::findOrFail($id);
+
+ 
+    if (User::where('email', $request->email)->where('id', '!=', $id)->exists()) {
+        return redirect()->back()
+            ->withInput()
+            ->with('error_email', 'El correo ya está registrado por otro usuario.');
     }
+
+
+    $datos = [
+        'name' => $request->name,
+        'email' => $request->email,
+    ];
+
+
+    if ($request->filled('password')) {
+        $datos['password'] = Hash::make($request->password);
+    }
+
+
+    if ($usuario->role === 'admin') {
+        $usuario->update($datos);
+        return redirect()->to('/admin/Index')->with('mensaje', 'Administrador actualizado con éxito');
+    }
+
+    return redirect()->back()->with('error', 'No está permitido modificar este usuario.');
+}
 
     /**
      * Remove the specified resource from storage.

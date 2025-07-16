@@ -63,7 +63,7 @@
                         <td>{{ $usuario->email }}</td>
                         <td>{{ $usuario->role }}</td>
                         <td>
-                            <a href="" class="btn btn-outline-warning btn-sm me-1" title="Editar">
+                            <a href="{{ route('users.edit', $usuario->id) }}" class="btn btn-outline-warning btn-sm me-1" title="Editar">
                                                     <i class="fa fa-pen"></i>
                                                 </a>
                                                 <form action="{{ route('users.destroy', $usuario->id) }}" method="POST" style="display:inline;" class="form-eliminar">
@@ -131,6 +131,24 @@
 });
     
 </script>
+
+  
+@if(session('error_email'))
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  Swal.fire({
+    position: "top-end",
+    icon: "error",
+    title: "{{ session('error_email') }}",
+    showConfirmButton: false,
+    timer: 2000,
+    width: '500px',
+    customClass: {
+      title: 'swal2-title-small'
+    }
+  });
+</script>
+@endif
 
 
 <script>
