@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RiesgoController;
 use App\Http\Controllers\ZonaSeguraController;
 use App\Http\Controllers\PuntoEncuentroController;
+use App\Http\Controllers\ReporteController;
 
 use App\Http\Controllers\UserController;
 
@@ -25,12 +26,13 @@ Route::get('/usuariosVista/usuarioRiesgo', [UserController::class, 'usuarioRiesg
 
 Route::get('/usuariosVista/usuarioZona', [UserController::class, 'usuarioZona']);
 
-
+Route::post('/zonas/reporte', [ZonaSeguraController::class, 'generarReporte'])->name('zonas.reporte');
 
 Route::get('/puntoEncuentros/mapa', [PuntoEncuentroController::class, 'mapa']);
 Route::resource('puntoEncuentros', PuntoEncuentroController::class);
 
-Route::get('/zonas/mapa', [ZonaSeguraController::class, 'mapa']);
+Route::get('/zonas/mapa', [ZonaSeguraController::class, 'mapa'])->name('zonas.mapa');
+
 Route::get('/riesgos/mapa', [RiesgoController::class, 'mapa']);
 Route::resource('riesgos',RiesgoController::class);
 
@@ -61,3 +63,9 @@ Route::get('/registrarse', function () {
 });
 
 Route::get('/riesgos/visitantes', [RiesgoController::class, 'visitantes']);
+
+
+Route::prefix('reportes')->group(function() {
+    Route::get('/mapa-general', [ReporteController::class, 'mapaGeneral'])->name('reportes.mapa-general');
+    Route::post('/generar', [ReporteController::class, 'generarReporte'])->name('reportes.generar');
+});

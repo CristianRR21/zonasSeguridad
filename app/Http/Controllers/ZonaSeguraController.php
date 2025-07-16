@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ZonaSegura;
+use PDF;
+use QrCode;
 
 class ZonaSeguraController extends Controller
 {
@@ -20,6 +22,37 @@ class ZonaSeguraController extends Controller
     {
         $zonas = ZonaSegura::all();
         return view('zonas.mapa', compact('zonas'));
+    }
+    public function generarReporte(Request $request)
+    {
+        $tipoSeleccionado = $request->input('tipoSeleccionado', 'TODOS');
+
+        $zonas = ($tipoSeleccionado && $tipoSeleccionado !== 'TODOS')
+            ? ZonaSegura::where('tipo_seguridad', $tipoSeleccionado)->get()
+            : ZonaSegura::all();
+
+        // Generar URL para el QR
+        $urlMapa = route('zonas.mapa');
+        
+        // Generar QR en formato SVG
+        $qrSvg = QrCode::format('svg')
+            ->size(120)
+            ->generate($urlMapa);
+        
+        $qrBase64 = 'data:image/svg+xml;base64,' . base64_encode($qrSvg);
+        
+        // Imagen del mapa capturada
+        $imagenMapa = $request->input('imagenMapa');
+
+        // Pasar todas las variables necesarias a la vista
+        return PDF::loadView('zonas.reporte', [
+            'zonas' => $zonas,
+            'imagenMapa' => $imagenMapa,
+            'qrBase64' => $qrBase64,
+            'tipoSeleccionado' => $tipoSeleccionado,
+            'urlMapa' => $urlMapa  // Asegúrate de pasar esta variable
+        ])->setPaper('A4', 'portrait')
+        ->download('reporte_zonas_seguras_' . now()->format('Ymd_His') . '.pdf');
     }
 
     /**

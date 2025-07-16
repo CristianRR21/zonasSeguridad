@@ -17,11 +17,21 @@
 
         <div id="mapa_general" style="height: 500px; border: 2px solid #ccc;"></div>
 
-        <div class="d-flex justify-content-end mt-4">
-            <a href="{{ route('zonas.index') }}" class="btn btn-outline-primary shadow" title="Volver">
-                <i class="fa fa-home"></i>
-            </a>
-        </div>
+        <form method="POST" action="{{ route('zonas.reporte') }}" id="formReporte">
+            @csrf
+            <input type="hidden" name="imagenMapa" id="imagenMapa">
+            <input type="hidden" name="tipoSeleccionado" id="tipoSeleccionado">
+
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" id="btnGenerarPDF" class="btn btn-outline-success shadow">
+                    <i class="fas fa-file-pdf"></i> Generar Reporte PDF
+                </button>
+                
+                <a href="{{ route('zonas.index') }}" class="btn btn-outline-primary shadow" title="Volver">
+                    <i class="fa fa-home"></i> Volver
+                </a>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -41,8 +51,13 @@
 
         // Escuchar cambios del filtro
         document.getElementById('filtroTipo').addEventListener('change', function () {
-            renderizarZonas(this.value);
+            const tipo = this.value;
+            document.getElementById('tipoSeleccionado').value = tipo;
+            renderizarZonas(tipo);
         });
+
+        // Configurar el valor inicial del tipo seleccionado
+        document.getElementById('tipoSeleccionado').value = 'TODOS';
     };
 
     function renderizarZonas(filtro) {
@@ -96,6 +111,29 @@
             circulos.push(circulo);
         });
     }
+
+    // Capturar el mapa y enviar el formulario
+    document.getElementById('btnGenerarPDF').addEventListener('click', function() {
+        const btn = this;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generando...';
+
+        html2canvas(document.getElementById('mapa_general'), {
+            useCORS: true,
+            allowTaint: false,
+            scale: 1,
+            logging: false
+        }).then(canvas => {
+            document.getElementById('imagenMapa').value = canvas.toDataURL('image/png');
+            document.getElementById('formReporte').submit();
+        }).catch(error => {
+            console.error('Error al capturar el mapa:', error);
+            alert('Error al generar el reporte. Intente nuevamente.');
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-file-pdf"></i> Generar Reporte PDF';
+        });
+    });
+
     window.initMap();
 </script>
 @endsection

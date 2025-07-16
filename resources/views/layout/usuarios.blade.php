@@ -72,9 +72,6 @@
                     <h1 class="mb-4">Descubre la seguridad de tu comunidad con nuestro Sistema de Información Geográfica</h1>
                     <p class="caps">Visualiza zonas de riesgo, zonas seguras y puntos de encuentro seguros en mapas interactivos</p>
                 </div>
-                <a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
-                    <span class="fa fa-play"></span>
-                </a>
             </div>
         </div>
     </div>
