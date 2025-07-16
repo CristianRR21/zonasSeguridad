@@ -32,6 +32,12 @@ class UserController extends Controller
 
 
 
+    public function adminIndex()
+    {
+        $usuarios = User::where('role', 'admin')->get(); 
+        return view('administradores.index', compact('usuarios'));
+    }
+
    
 public function store(Request $request)
 {
@@ -49,13 +55,18 @@ public function store(Request $request)
         'name' => $request->name,
         'email' => $request->email,
         'password' => Hash::make($request->password),
-        'role' => 'visitante', // Valor fijo por defecto
+        'role' => $request->role,
     ];
 
     User::create($datos);
 
-    // Redirección al login con mensaje
+    if ($request->role === 'admin') {
+        return redirect('/admin/Index')->with('mensaje', 'Administrador creado correctamente.');
+       
+    }
+
     return redirect()->route('login')->with('mensaje', 'Usuario registrado correctamente.');
+
 }   
 
 

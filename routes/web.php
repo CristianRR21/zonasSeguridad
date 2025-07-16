@@ -46,6 +46,8 @@ Route::post('users/login', [UserController::class, 'login'])->name('users.login'
 
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
+Route::get('/admin/Index', [UserController::class, 'adminIndex']);
+
 
 
 Route::get('/admin/inicio', function () {
