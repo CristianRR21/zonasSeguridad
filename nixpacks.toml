@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["php", "php.packages.composer", "nodejs", "npm", "mariadb"]
+nixPkgs = ["php", "php.packages.composer", "nodejs", "mariadb"]
 
 [phases.build]
 cmds = [
@@ -9,7 +9,6 @@ cmds = [
   "php artisan config:cache",
   "php artisan route:cache",
   "php artisan view:cache"
-  # No corras migraciones aquí
 ]
 
 [start]
