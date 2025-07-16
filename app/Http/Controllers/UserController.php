@@ -34,8 +34,13 @@ public function store(Request $request)
     
     // Validación
     
+   
+    if (User::where('email', $request->email)->exists()) {
+    return redirect()->back()
+        ->withInput()
+        ->with('error_email', 'El correo ya está registrado.');
+    }
 
-    // Adaptado usando un array como en RiesgoController
     $datos = [
         'name' => $request->name,
         'email' => $request->email,

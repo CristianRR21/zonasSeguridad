@@ -19,6 +19,17 @@
 
     <!-- Main Styling -->
     <link href="{{ asset('plantilla/administrador/build/assets/css/argon-dashboard-tailwind.css?v=1.0.1') }}" rel="stylesheet" />
+       <style>
+
+    .error {
+        color: red;
+        font-family: 'Montserrat';
+    }
+
+    .form-control.error {
+        border: 1px solid red;
+    }
+</style>
   </head>
 
   <body class="m-0 font-sans antialiased font-normal bg-white text-start text-base leading-default text-slate-500">
@@ -41,7 +52,7 @@
                     <h4 class="font-bold">Iniciar Sesión</h4>
                   </div>
                   <div class="flex-auto p-6">
-                      <form method="POST" action="{{ route('users.login') }}">
+                      <form method="POST" action="{{ route('users.login') }}" id="login">
                             @csrf
                       <div class="mb-4">
                         <p class="mb-0">Email</p>
@@ -64,12 +75,23 @@
                   </div>
                 </div>
               </div>
-              <div class="absolute top-0 right-0 flex-col justify-center hidden w-6/12 h-full max-w-full px-3 pr-0 my-auto text-center flex-0 lg:flex">
-                <div class="relative flex flex-col justify-center h-full bg-cover px-24 m-4 overflow-hidden bg-[url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg')] rounded-xl ">
-                  <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-blue-500 to-violet-500 opacity-60"></span>
-                  
-                </div>
-              </div>
+  
+<div class="absolute top-0 right-0 flex-col justify-center hidden w-6/12 h-full max-w-full px-3 pr-0 my-auto text-center flex-0 lg:flex">
+  <div
+    class="relative flex flex-col justify-center h-full px-24 m-4 overflow-hidden rounded-xl"
+    style="
+      background-image: url('{{ asset('plantilla/administrador/build/assets/img/logo.png') }}');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    "
+  >
+    <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-blue-500 to-violet-500 opacity-60"></span>
+  </div>
+</div>
+
+   
+
             </div>
           </div>
         </div>
@@ -104,9 +126,38 @@
         </div>
       </div>
     </footer>
-  </body>
-  <!-- plugin for scrollbar  -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+  <script>
+      $("#login").validate({
+        rules: {
+          email: {
+            required: true,
+            email: true
+          },
+          password: {
+            required: true,
+            minlength: 6
+          }
+        },
+        messages: {
+          email: {
+            required: "Por favor ingresa tu correo",
+            email: "Ingresa un correo válido"
+          },
+          password: {
+            required: "Por favor ingresa tu contraseña",
+            minlength: "Mínimo 6 caracteres"
+          }
+        }
+      });
+
+  </script>
+    <!-- plugin for scrollbar  -->
   <script src="{{ asset('plantilla/administrador/build/assets/js/plugins/perfect-scrollbar.min.js') }}" async></script>
   <!-- main script file  -->
   <script src="{{ asset('plantilla/administrador/build/assets/js/argon-dashboard-tailwind.js?v=1.0.1') }}" async></script>
+  </body>
+
 </html>
